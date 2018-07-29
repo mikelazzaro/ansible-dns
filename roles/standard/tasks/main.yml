@@ -1,0 +1,25 @@
+---
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+
+- name: Install hostname template
+  template:
+    src: hostname.j2
+    dest: /etc/hostname
+    owner: root
+    group: root
+    mode: 0644
+  notify: "Set hostname temporarily"
+
+- name: Update hosts file
+  lineinfile:
+    path: /etc/hosts
+    regexp: "^127.0.0.1"
+    line: "127.0.0.1 {{ hostname }} {{ hostname }}.global.corp.domain localhost"
+  notify: "Set hostname temporarily"
+
+- name: Ensure any pending handlers are run now
+  meta: flush_handlers
+

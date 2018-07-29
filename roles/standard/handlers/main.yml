@@ -1,0 +1,4 @@
+---
+
+- name: Set hostname temporarily
+  shell: "hostname {{ hostname }}"

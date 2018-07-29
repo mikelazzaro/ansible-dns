@@ -1,0 +1,5 @@
+---
+
+# Location-specific settings
+api_server_ip:            "10.100.40.25"
+api_server_hostname:      "delta01.global.corp.domain"

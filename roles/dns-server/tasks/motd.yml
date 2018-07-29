@@ -1,0 +1,9 @@
+---
+
+- name: Replace standard MOTD help text with a warning message
+  copy:
+    src: motd_warning
+    dest: "/etc/update-motd.d/10-help-text"
+    owner: root
+    group: root
+    mode: "0755"

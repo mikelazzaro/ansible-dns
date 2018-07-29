@@ -1,0 +1,53 @@
+---
+
+- include_tasks: apparmor.yml
+
+- include_tasks: motd.yml
+
+# Always want the latest versions of everything installed
+- name: Update all packages to latest
+  apt:
+    upgrade: dist
+
+- name: Install bind and other required packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - bind9
+    - bind9-utils
+    - bind9-doc
+
+- name: Deploy bind config files
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ dns_config_folder }}/{{ item }}"
+    owner: "{{ dns_config_user }}"
+    group: "{{ dns_config_group }}"
+    mode: 0644
+  with_items:
+    - named.conf
+    - named.conf.local
+    - named.conf.options
+
+- name: Deploy zone files
+  template:
+    src: db.corp.domain.j2
+    dest: "{{ dns_config_folder }}/db.corp.domain"
+
+- name: Check local zone file
+  command: "named-checkzone corp.domain {{ dns_config_folder }}/db.corp.domain"
+
+- name: Restart bind
+  service:
+    name: bind9
+    state: restart
+
+- name: Pause to allow server to pull zone file from central DNS server
+  pause:
+    seconds: 30
+
+# Needed for on-prem Ubuntu-based templates, but
+#   may not needed for AWS
+
+- include_tasks: firewall.yml

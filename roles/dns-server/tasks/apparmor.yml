@@ -1,0 +1,31 @@
+---
+
+# I'm sure apparmor is a great tool, but I didn't have time to
+#   learn it during this project, so I disabled it for the moment,
+#   and threw a task in the backlog to come back to it.
+
+- name: Ensure apparmor is stopped
+  service:
+    name: apparmor
+    state: stopped
+
+# Note: fails if no profiles exist, which will happen after the first run
+#
+# Note 2: apparmor uses the 'service' syntax, but 'teardown' isn't supported by
+#         the Ansible service module, so we can ignore the warning
+- name: Remove any apparmor profiles
+  command: "service apparmor teardown"
+#  args:
+    warn: no
+  ingore_errors: yes
+
+- name: Disable apparmor
+  command: "update-rc.d -f apparmor remove"
+
+- name: Ensure apparmor is completely removed
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - apparmor
+    - apparmor-utils

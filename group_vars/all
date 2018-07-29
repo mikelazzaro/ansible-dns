@@ -1,0 +1,20 @@
+ansible_private_key_file:         "~/.ssh/dns_servers"
+ansible_user:                     "ansible"
+
+timezone:                         "America/New_York"
+ntp_server:                       ""
+
+# Bind config details
+dns_config_user:                  "root"
+dns_config_group:                 "root"
+dns_config_folder:                "/etc/bind"
+dns_service_user:                 "bind"
+
+# Default bind parameters
+dns_param_refresh:                "604800"
+dns_param_retry:                  "86400"
+dns_param_expire:                 "2419200"
+dns_param_negative_cache_ttl:     "604800"
+
+central_dns_hostname:                "central-dns01.global.corp.domain"
+central_dns_ip:                      "10.100.0.100"

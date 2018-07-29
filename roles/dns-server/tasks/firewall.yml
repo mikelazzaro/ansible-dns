@@ -1,0 +1,14 @@
+---
+
+- name: Allow specific app traffic through UFW
+  ufw:
+    rule: allow
+    name: "{{ item }}"
+  with_items:
+    - "OpenSSH"
+    - "Bind9"
+
+- name: Deny all other traffic
+  ufw:
+    state: enabled
+    policy: deny
