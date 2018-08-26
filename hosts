@@ -1,14 +1,17 @@
+[central]
+central                     ansible_host: 10.100.0.100
+
 [alpha]
-alpha-dns01               ansible_host: 10.100.10.100
+alpha-dns01                 ansible_host: 10.100.10.100
 
 [beta]
-beta-dns01                ansible_host: 10.100.20.100
+beta-dns01                  ansible_host: 10.100.20.100
 
 [gamma]
-gamma-dns01               ansible_host: 10.100.30.100
+gamma-dns01                 ansible_host: 10.100.30.100
 
 [delta]
-delta-dns01               ansible_host: 10.100.40.100
+delta-dns01                 ansible_host: 10.100.40.100
 
 [dns_servers:children]
 alpha
