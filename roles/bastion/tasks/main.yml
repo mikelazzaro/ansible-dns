@@ -15,3 +15,9 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: "0644"
+
+- name: Fetch and install EC2 dynamic inventory script
+  get_url:
+    url: "https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py"
+    dest: "/etc/ansible/hosts"
+    mode: "755"
