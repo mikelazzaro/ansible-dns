@@ -61,23 +61,43 @@ resource "aws_security_group" "demo-bastion-sg"{
 
 }
 
-# TODO: Lock down these permissions!
-data "aws_iam_policy_document" "bastion_iam_policy" {
+data "aws_iam_policy_document" "assume_role_policy" {
   statement {
-    actions = ["*"]
+    actions = ["sts:AssumeRole"]
+    principals {
+      type = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
   }
 }
 
 resource "aws_iam_role" "bastion_role" {
   name = "bastion_server_role"
 
-  assume_role_policy = "${data.aws_iam_policy_document.bastion_iam_policy.json}"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
 }
+
 
 resource "aws_iam_instance_profile" "bastion_profile" {
   name = "bastion-profile"
   role = "${aws_iam_role.bastion_role.name}"
 }
+
+# TODO: Lock down these permissions!
+data "aws_iam_policy_document" "basion_role_policy_document" {
+  statement {
+    effect = "Allow"
+    resources = ["*"]
+    actions = ["*"]
+
+  }
+}
+
+resource "aws_iam_role_policy" "basion_role_policy" {
+  policy = "${data.aws_iam_policy_document.basion_role_policy_document.json}"
+  role = "${aws_iam_role.bastion_role.id}"
+}
+
 
 //
 //resource "aws_iam_role" "bastion_role" {
