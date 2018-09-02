@@ -1,21 +1,19 @@
 
-# Basic AWS settings
-provider "aws" {
-  region = "us-east-2"
-//  region = "us-east-1"
-}
+#
+#   Networking setup
+##############################################
 
 # Define the VPC
 resource "aws_vpc" "demo_vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags {
-    Name = "demo-vpc"
+    Name = "Demo VPC"
   }
 }
 
 # Public subnet
-resource "aws_subnet" "public-subnet" {
+resource "aws_subnet" "public_subnet" {
   vpc_id = "${aws_vpc.demo_vpc.id}"
   cidr_block = "10.0.0.0/24"
   availability_zone = "us-east-2a"
@@ -25,20 +23,19 @@ resource "aws_subnet" "public-subnet" {
   }
 }
 
-# Core subnet (private)
-resource "aws_subnet" "core-subnet" {
+# Central subnet (private)
+resource "aws_subnet" "central_subnet" {
   vpc_id = "${aws_vpc.demo_vpc.id}"
   cidr_block = "10.0.10.0/24"
   availability_zone = "us-east-2a"
 
   tags {
-    Name = "Core Subnet"
+    Name = "Central Subnet"
   }
 }
 
-
 # Subnets for each location (private)
-resource "aws_subnet" "alpha-subnet" {
+resource "aws_subnet" "alpha_subnet" {
   vpc_id = "${aws_vpc.demo_vpc.id}"
   cidr_block = "10.0.20.0/24"
   availability_zone = "us-east-2a"
@@ -48,7 +45,7 @@ resource "aws_subnet" "alpha-subnet" {
   }
 }
 
-resource "aws_subnet" "beta-subnet" {
+resource "aws_subnet" "beta_subnet" {
   vpc_id = "${aws_vpc.demo_vpc.id}"
   cidr_block = "10.0.30.0/24"
   availability_zone = "us-east-2a"
@@ -58,7 +55,7 @@ resource "aws_subnet" "beta-subnet" {
   }
 }
 
-resource "aws_subnet" "gamma-subnet" {
+resource "aws_subnet" "gamma_subnet" {
   vpc_id = "${aws_vpc.demo_vpc.id}"
   cidr_block = "10.0.40.0/24"
   availability_zone = "us-east-2a"
@@ -68,7 +65,7 @@ resource "aws_subnet" "gamma-subnet" {
   }
 }
 
-resource "aws_subnet" "delta-subnet" {
+resource "aws_subnet" "delta_subnet" {
   vpc_id = "${aws_vpc.demo_vpc.id}"
   cidr_block = "10.0.50.0/24"
   availability_zone = "us-east-2a"
@@ -103,7 +100,7 @@ resource "aws_route_table" "demo-public-rt" {
 
 # Assign the public RT to the public subnet
 resource "aws_route_table_association" "demo-public-rt" {
-  subnet_id = "${aws_subnet.public-subnet.id}"
+  subnet_id = "${aws_subnet.public_subnet.id}"
   route_table_id = "${aws_route_table.demo-public-rt.id}"
 }
 
@@ -166,4 +163,14 @@ resource "aws_security_group" "demo-private-sg"{
     Name = "Demo Private SG"
   }
 
+}
+
+# Expose various network stuff
+
+output "demo_vpc_id" {
+  value = "${aws_vpc.demo_vpc.id}"
+}
+
+output "public_subnet_id" {
+  value = "${aws_subnet.public_subnet.id}"
 }
