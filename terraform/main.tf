@@ -62,28 +62,23 @@ resource "aws_security_group" "demo-bastion-sg"{
 }
 
 # TODO: Lock down these permissions!
+data "aws_iam_policy_document" "bastion_iam_policy" {
+  statement {
+    actions = ["*"]
+  }
+}
+
 resource "aws_iam_role" "bastion_role" {
   name = "bastion_server_role"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "*",
-      "Effect": "Allow",
-      "Resource": "*"
-    }
-  ]
-}
-EOF
+  assume_role_policy = "${data.aws_iam_policy_document.bastion_iam_policy.json}"
 }
 
-//data "aws_iam_policy_document" "bastion_server_role" {
-//  statement {
-//    actions = ["*"]
-//  }
-//}
+resource "aws_iam_instance_profile" "bastion_profile" {
+  name = "bastion-profile"
+  role = "${aws_iam_role.bastion_role.name}"
+}
+
 //
 //resource "aws_iam_role" "bastion_role" {
 //  name = "basion_server_role"
@@ -106,7 +101,7 @@ resource "aws_instance" "bastion" {
   subnet_id = "${module.vpc.public_subnet_id}"
   private_ip = "10.0.0.5"
 
-  iam_instance_profile = "${aws_iam_role.bastion_role.id}"
+  iam_instance_profile = "${aws_iam_instance_profile.bastion_profile.id}"
 
   tags {
     Name = "Bastion Server"
