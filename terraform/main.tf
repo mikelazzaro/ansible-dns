@@ -33,11 +33,8 @@ module "vpc" {
 #
 #   Bastion setup
 ##############################################
-//
-//# Data sources
-////data "aws_vpc"
-//
-# Define the security group for the private subnets
+
+# Define the security group & IAM roles for bastion server
 resource "aws_security_group" "demo-bastion-sg"{
   name = "demo_bastion"
   description = "Allow SSH traffic from all IPs"
@@ -64,6 +61,33 @@ resource "aws_security_group" "demo-bastion-sg"{
 
 }
 
+# TODO: Lock down these permissions!
+resource "aws_iam_role" "bastion_role" {
+  name = "bastion_server_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "*",
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+}
+
+//data "aws_iam_policy_document" "bastion_server_role" {
+//  statement {
+//    actions = ["*"]
+//  }
+//}
+//
+//resource "aws_iam_role" "bastion_role" {
+//  name = "basion_server_role"
+//  assume_role_policy
+//}
 
 //data "aws_ami" "ubuntu_1604" {
 //  most_recent = true
@@ -80,8 +104,8 @@ resource "aws_instance" "bastion" {
   # Don't need to specify VPC, since subnet will take care of that
   subnet_id = "${module.vpc.public_subnet_id}"
   private_ip = "10.0.0.5"
-  # TODO - get this set up
-//  iam_instance_profile = "TODO"
+
+  iam_instance_profile = "${aws_iam_role.bastion_role.id}"
 
   tags {
     Name = "Bastion Server"
@@ -123,6 +147,10 @@ resource "aws_eip_association" "bastion_eip" {
   instance_id = "${aws_instance.bastion.id}"
   allocation_id = "${data.aws_eip.bastion_eip.id}"
 }
+
+#
+#   Output settings
+##############################################
 
 //output "bastion_ip" {
 //  value = "${aws_eip_association.bastion_eip.public_ip}"
