@@ -1,0 +1,10 @@
+---
+
+- name: Finish configuration of bastion server
+  hosts: localhost
+  connection: local
+  become: yes
+  gather_facts: yes
+  roles:
+    - standard
+#    - bastion
