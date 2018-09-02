@@ -8,7 +8,6 @@
     group: "{{ ansible_user }}"
 #    mode: ""
 
-
 - name: Deploy SSH config file
   template:
     src: ssh_config.j2
