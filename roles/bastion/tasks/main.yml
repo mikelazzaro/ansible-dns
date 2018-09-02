@@ -16,6 +16,13 @@
     group: "{{ ansible_user }}"
     mode: "0644"
 
+- name: Install various AWS dependencies
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - boto
+
 - name: Make sure ansible config folder exists
   file:
     path: "/etc/ansible"
