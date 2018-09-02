@@ -152,16 +152,22 @@ resource "aws_security_group" "demo-internal-sg"{
 
   # DNS
   ingress {
-    from_port = -1
+    from_port = 53
     to_port = 53
     protocol = "udp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+  ingress {
+    from_port = 53
+    to_port = 53
+    protocol = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
 
   # ICMP
   ingress {
-    from_port = -1
-    to_port = -1
+    from_port = 0
+    to_port = 0
     protocol = "icmp"
     cidr_blocks = ["10.0.0.0/16"]
   }
