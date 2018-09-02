@@ -2,7 +2,7 @@
 
 - name: Make sure SSH folder exists
   file:
-    path: "~/.ssh"
+    path: "{{ ssh_config_folder }}"
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
@@ -12,7 +12,7 @@
 - name: Deploy SSH config file
   template:
     src: ssh_config.j2
-    dest: "~/.ssh/config"
+    dest: "{{ ssh_config_folder }}/config"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: "0644"
