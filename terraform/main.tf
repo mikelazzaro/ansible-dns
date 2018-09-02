@@ -198,11 +198,11 @@ output "public_subnet_id" {
 }
 
 output "central_subnet_id" {
-  value = "${module.vpc.public_subnet_id}"
+  value = "${module.vpc.central_subnet_id}"
 }
 
 output "alpha_subnet_id" {
-  value = "${module.vpc.central_subnet_id}"
+  value = "${module.vpc.alpha_subnet_id}"
 }
 
 output "beta_subnet_id" {
