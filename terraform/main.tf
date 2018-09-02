@@ -75,19 +75,11 @@ resource "aws_instance" "bastion" {
   # TODO - Organize!
   ami           = "ami-0552e3455b9bc8d50"
   instance_type = "t2.micro"
-
   key_name = "${var.human_keypair_name}"
-//  vpc_security_group_ids  = ["aws_security_group.demo-bastion-sg.id"]
-//  security_groups = ["aws_security_group.demo-bastion-sg.id"]
-//  security_groups = ["${aws_security_group.demo-bastion-sg.id}"]
   vpc_security_group_ids  = ["${aws_security_group.demo-bastion-sg.id}"]
-
   # Don't need to specify VPC, since subnet will take care of that
-//  subnet_id = "${aws_subnet.public_subnet.id}"
   subnet_id = "${module.vpc.public_subnet_id}"
-
   private_ip = "10.0.0.5"
-
   # TODO - get this set up
 //  iam_instance_profile = "TODO"
 
@@ -95,6 +87,32 @@ resource "aws_instance" "bastion" {
     Name = "Bastion Server"
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install python-pip -y",
+      "pip install ansible",
+      "git clone https://github.com/mikelazzaro/ansible-dns.git"
+    ]
+  }
+//
+//  provisioner "remote-exec" {
+//    command = "sudo apt-get install python-pip"
+//  }
+//
+//  provisioner "remote-exec" {
+//    command = "pip install ansible"
+//  }
+
+
+//  provisioner "file" {
+//    source = ""
+//    destination = ""
+//  }
+
+//  provisioner "local-exec" {
+//    command = "sudo apt-get update && sudo apt-get install python-pip && "
+//  }
 }
 
 data aws_eip "bastion_eip" {
@@ -109,6 +127,3 @@ resource "aws_eip_association" "bastion_eip" {
 output "bastion_ip" {
   value = "${aws_eip_association.bastion_eip.public_ip}"
 }
-
-
-
