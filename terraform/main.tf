@@ -26,10 +26,6 @@ module "vpc" {
   source = "modules/vpc"
 }
 
-//data "public_subnet" {
-//
-//}
-
 #
 #   Bastion setup
 ##############################################
@@ -98,13 +94,6 @@ resource "aws_iam_role_policy" "basion_role_policy" {
   role = "${aws_iam_role.bastion_role.id}"
 }
 
-
-//
-//resource "aws_iam_role" "bastion_role" {
-//  name = "basion_server_role"
-//  assume_role_policy
-//}
-
 //data "aws_ami" "ubuntu_1604" {
 //  most_recent = true
 //
@@ -135,24 +124,6 @@ resource "aws_instance" "bastion" {
       "git clone https://github.com/mikelazzaro/ansible-dns.git"
     ]
   }
-//
-//  provisioner "remote-exec" {
-//    command = "sudo apt-get install python-pip"
-//  }
-//
-//  provisioner "remote-exec" {
-//    command = "pip install ansible"
-//  }
-
-
-//  provisioner "file" {
-//    source = ""
-//    destination = ""
-//  }
-
-//  provisioner "local-exec" {
-//    command = "sudo apt-get update && sudo apt-get install python-pip && "
-//  }
 }
 
 data aws_eip "bastion_eip" {
@@ -162,6 +133,50 @@ data aws_eip "bastion_eip" {
 resource "aws_eip_association" "bastion_eip" {
   instance_id = "${aws_instance.bastion.id}"
   allocation_id = "${data.aws_eip.bastion_eip.id}"
+}
+
+
+resource "aws_security_group" "demo-internal-sg"{
+  name = "demo_internal_sg"
+  description = "Allow SSH, DNS, and ICMP traffic between internal hosts"
+//  vpc_id = "${aws_vpc.demo_vpc.id}"
+  vpc_id = "${module.vpc.demo_vpc_id}"
+
+  # SSH
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  # DNS
+  ingress {
+    from_port = -1
+    to_port = 53
+    protocol = "udp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  # ICMP
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  egress {
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "Demo Internal SG"
+  }
+
 }
 
 #
