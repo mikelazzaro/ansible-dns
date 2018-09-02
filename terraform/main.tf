@@ -124,6 +124,30 @@ resource "aws_eip_association" "bastion_eip" {
   allocation_id = "${data.aws_eip.bastion_eip.id}"
 }
 
-output "bastion_ip" {
-  value = "${aws_eip_association.bastion_eip.public_ip}"
+//output "bastion_ip" {
+//  value = "${aws_eip_association.bastion_eip.public_ip}"
+//}
+
+output "public_subnet_id" {
+  value = "${module.vpc.public_subnet_id}"
+}
+
+output "central_subnet_id" {
+  value = "${module.vpc.public_subnet_id}"
+}
+
+output "alpha_subnet_id" {
+  value = "${module.vpc.central_subnet_id}"
+}
+
+output "beta_subnet_id" {
+  value = "${module.vpc.beta_subnet_id}"
+}
+
+output "gamma_subnet_id" {
+  value = "${module.vpc.gamma_subnet_id}"
+}
+
+output "delta_subnet_id" {
+  value = "${module.vpc.delta_subnet_id}"
 }
