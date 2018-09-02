@@ -174,3 +174,23 @@ output "demo_vpc_id" {
 output "public_subnet_id" {
   value = "${aws_subnet.public_subnet.id}"
 }
+
+output "central_subnet_id" {
+  value = "${aws_subnet.central_subnet.id}"
+}
+
+output "alpha_subnet_id" {
+  value = "${aws_subnet.alpha_subnet.id}"
+}
+
+output "beta_subnet_id" {
+  value = "${aws_subnet.beta_subnet.id}"
+}
+
+output "gamma_subnet_id" {
+  value = "${aws_subnet.gamma_subnet.id}"
+}
+
+output "delta_subnet_id" {
+  value = "${aws_subnet.delta_subnet.id}"
+}
