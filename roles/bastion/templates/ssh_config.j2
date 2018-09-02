@@ -1,0 +1,30 @@
+Host    *
+    Port=22
+    StrictHostKeyChecking=no
+    UserKnownHostsFile=/dev/null
+    PasswordAuthentication=no
+
+Host template
+    HostName={{ template_ip }}
+    User=ubuntu
+    IdentityFile=~/.ssh/human
+
+Host template-ansible
+    HostName={{ template_ip }}
+    User=ansible
+    IdentityFile=~/.ssh/ansible
+
+Host central-dns01
+    HostName={{ hostvars['central-dns01']['ansible_host'] }}
+    User=ubuntu
+    IdentityFile=~/.ssh/human
+
+Host alpha-dns01
+    HostName={{ hostvars['alpha-dns01']['ansible_host'] }}
+    User=ubuntu
+    IdentityFile=~/.ssh/human
+
+Host alpha-dns02
+    HostName={{ hostvars['alpha-dns02']['ansible_host'] }}
+    User=ubuntu
+    IdentityFile=~/.ssh/human
