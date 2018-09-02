@@ -8,3 +8,5 @@ aws_ssh_key: "human"
 aws_tags: {
   "Name": "{{ aws_name_tag }}"
 }
+
+aws_security_groups: "{{ internal_sg }}"
