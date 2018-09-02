@@ -1,5 +1,5 @@
 [central]
-central                     ansible_host=10.100.0.100
+central-dns01               ansible_host=10.100.0.100
 
 [alpha]
 alpha-dns01                 ansible_host=10.100.10.100
