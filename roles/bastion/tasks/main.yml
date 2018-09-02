@@ -17,6 +17,13 @@
     mode: "0644"
 
 - name: Install various AWS dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - awscli
+
+- name: Install various AWS dependencies
   pip:
     name: "{{ item }}"
     state: latest
