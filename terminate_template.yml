@@ -3,7 +3,7 @@
 - name: Terminate template server
   hosts: localhost
   connection: local
-  vars:
+  vars_files:
     - group_vars/template.yml
   tasks:
     - name: Terminate any running instances

@@ -3,9 +3,10 @@
 - name: Provision template server
   hosts: localhost
   connection: local
-  var_files:
+  vars_files:
     - host_vars/template.yml
   tasks:
+
     - name: Ensure exactly 1 template instance exists
       ec2:
         instance_type: "{{ aws_instance_type }}"
