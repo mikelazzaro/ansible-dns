@@ -1,6 +1,8 @@
 ansible_private_key_file:         "~/.ssh/dns_servers"
 ansible_user:                     "ansible"
 
+aws_region:                       "us-east-2"
+
 timezone:                         "America/New_York"
 ntp_server:                       ""
 
@@ -32,3 +34,5 @@ alpha_subnet_id:                  "subnet-0736c033874430cf1"
 beta_subnet_id:                   "subnet-05f5706c267bf01c1"
 gamma_subnet_id:                  "subnet-0dd7f5d52e1f6bc7b"
 delta_subnet_id:                  "subnet-001defea194682aa4"
+
+template_base_ami:                "ami-0552e3455b9bc8d50"
