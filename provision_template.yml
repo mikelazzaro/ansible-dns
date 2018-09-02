@@ -3,8 +3,8 @@
 - name: Provision template server
   hosts: localhost
   connection: local
-  vars:
-    - group_vars/template.yml
+  var_files:
+    - host_vars/template.yml
   tasks:
     - name: Ensure exactly 1 template instance exists
       ec2:
@@ -16,6 +16,7 @@
         key_name: "{{ aws_ssh_key }}"
         instance_tags: "{{ aws_tags }}"
         assign_public_ip: no
+        private_ip: "{{ template_ip }}"
         exact_count: 1
         count_tag:
           Name: "{{ aws_name_tag }}"

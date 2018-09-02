@@ -1,0 +1,10 @@
+---
+hostname: ansible-template
+aws_name_tag: "Ansible Template"
+aws_instance_type: "t2.micro"
+aws_ami_id: "{{ template_base_ami }}"
+aws_ssh_key: "human"
+
+aws_tags: {
+  "Name": "{{ aws_name_tag }}"
+}
