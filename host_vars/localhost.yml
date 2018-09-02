@@ -1,1 +1,2 @@
-hostname: "ansible-demo"
+hostname:     "ansible-demo"
+ansible_user: "ubuntu"

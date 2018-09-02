@@ -7,4 +7,5 @@
   gather_facts: yes
   roles:
     - standard
-#    - bastion
+    - user-friendly
+    - bastion
