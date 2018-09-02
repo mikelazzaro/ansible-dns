@@ -71,7 +71,8 @@ resource "aws_iam_role" "bastion_role" {
   "Statement": [
     {
       "Action": "*",
-      "Effect": "Allow"
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }
