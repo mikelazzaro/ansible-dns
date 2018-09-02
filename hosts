@@ -18,13 +18,13 @@ delta-dns01                 ansible_host=10.100.40.100
 delta-dns02                 ansible_host=10.100.40.101
 
 
-[primary:children]
+[primary]
 alpha-dns01
 beta-dns01
 gamma-dns01
 delta-dns01
 
-[secondary:children]
+[secondary]
 alpha-dns02
 beta-dns02
 gamma-dns02
