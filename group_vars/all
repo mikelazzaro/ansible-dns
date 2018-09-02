@@ -19,3 +19,16 @@ dns_param_negative_cache_ttl:     "604800"
 central_dns_hostname:             "central-dns01.global.corp.domain"
 central_dns_ip:                   "10.0.10.100"
 template_ip:                      "10.0.10.99"
+
+# Fill in with data returned by Terraform
+#central_subnet_id:                "xxxxxxxxxxxxxxxxx"
+#alpha_subnet_id:                  "xxxxxxxxxxxxxxxxx"
+#beta_subnet_id:                   "xxxxxxxxxxxxxxxxx"
+#gamma_subnet_id:                  "xxxxxxxxxxxxxxxxx"
+#delta_subnet_id:                  "xxxxxxxxxxxxxxxxx"
+
+central_subnet_id:                "subnet-0b658dbd6cb630736"
+alpha_subnet_id:                  "subnet-0736c033874430cf1"
+beta_subnet_id:                   "subnet-05f5706c267bf01c1"
+gamma_subnet_id:                  "subnet-0dd7f5d52e1f6bc7b"
+delta_subnet_id:                  "subnet-001defea194682aa4"
