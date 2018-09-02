@@ -79,7 +79,8 @@ resource "aws_instance" "bastion" {
   key_name = "${var.human_keypair_name}"
 //  vpc_security_group_ids  = ["aws_security_group.demo-bastion-sg.id"]
 //  security_groups = ["aws_security_group.demo-bastion-sg.id"]
-  security_groups = ["${aws_security_group.demo-bastion-sg.id}"]
+//  security_groups = ["${aws_security_group.demo-bastion-sg.id}"]
+  vpc_security_group_ids  = ["${aws_security_group.demo-bastion-sg.id}"]
 
   # Don't need to specify VPC, since subnet will take care of that
 //  subnet_id = "${aws_subnet.public_subnet.id}"
