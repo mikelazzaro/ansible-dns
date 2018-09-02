@@ -17,9 +17,9 @@
     mode: "0644"
 
 - name: Make sure ansible config folder exists
-    file:
-      path: "/etc/ansible"
-      state: directory
+  file:
+    path: "/etc/ansible"
+    state: directory
 
 - name: Fetch and install EC2 dynamic inventory script
   get_url:
