@@ -36,4 +36,4 @@ gamma_subnet_id:                  "subnet-0dd7f5d52e1f6bc7b"
 delta_subnet_id:                  "subnet-001defea194682aa4"
 
 template_base_ami:                "ami-0552e3455b9bc8d50"
-internal_sg:                      "demo-internal-sg"
+internal_sg:                      "demo_internal_sg"

@@ -13,7 +13,7 @@
         image: "{{ aws_ami }}"
         region: "{{ aws_region }}"
         vpc_subnet_id: "{{ central_subnet_id }}"
-        group: "{{ aws_security_groups }}"
+        group: "{{ aws_security_group_name }}"
         key_name: "{{ aws_ssh_key }}"
         instance_tags: "{{ aws_tags }}"
         assign_public_ip: no
