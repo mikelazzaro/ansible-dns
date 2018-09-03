@@ -19,6 +19,9 @@ $TTL    5m
 
 ; Global DNS records
 
+api.global.corp.                    IN      CNAM    api.corp.
+db.global.corp.                     IN      CNAME   db.corp.
+
 central-dns01.global.corp.          IN      A       10.0.10.100
 
 alpha-api.global.corp.              IN      A       10.0.20.25
