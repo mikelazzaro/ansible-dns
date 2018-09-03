@@ -4,8 +4,8 @@
 ##############################################
 
 variable "bastion_public_ip" {}
-variable "human_keypair_name" {}
-variable "ansible_keypair_name" {}
+//variable "human_keypair_name" {}
+//variable "ansible_keypair_name" {}
 
 
 #
@@ -33,7 +33,7 @@ module "vpc" {
 # Define the security group & IAM roles for bastion server
 resource "aws_security_group" "demo-bastion-sg"{
   name = "demo_bastion"
-  description = "Allow SSH traffic from all IPs"
+  description = "Allow SSH & ICMP traffic from all IPs"
 //  vpc_id = "${aws_vpc.demo_vpc.id}"
   vpc_id = "${module.vpc.demo_vpc_id}"
 
@@ -41,6 +41,13 @@ resource "aws_security_group" "demo-bastion-sg"{
     from_port = 22
     to_port = 22
     protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 0
+    to_port = 0
+    protocol = "icmp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -104,11 +111,14 @@ resource "aws_instance" "bastion" {
   # TODO - Organize!
   ami           = "ami-0552e3455b9bc8d50"
   instance_type = "t2.micro"
-  key_name = "${var.human_keypair_name}"
+//  key_name = "${var.human_keypair_name}"
+  key_name = "human"
   vpc_security_group_ids  = ["${aws_security_group.demo-bastion-sg.id}"]
   # Don't need to specify VPC, since subnet will take care of that
   subnet_id = "${module.vpc.public_subnet_id}"
   private_ip = "10.0.0.5"
+//  public_ip = "${var.bastion_public_ip}"
+  associate_public_ip_address = true
 
   iam_instance_profile = "${aws_iam_instance_profile.bastion_profile.id}"
 
@@ -123,6 +133,12 @@ resource "aws_instance" "bastion" {
       "pip install ansible",
       "git clone https://github.com/mikelazzaro/ansible-dns.git"
     ]
+
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      private_key = "${file("~/.ssh/human.pem")}"
+    }
   }
 }
 
