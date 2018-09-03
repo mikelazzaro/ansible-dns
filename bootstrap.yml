@@ -23,4 +23,5 @@
   gather_facts: yes
   roles:
     - standard
+    - user-friendly
     - central-dns-server
