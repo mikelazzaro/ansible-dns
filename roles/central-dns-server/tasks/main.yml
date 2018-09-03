@@ -31,6 +31,16 @@
     - named.conf.local
     - named.conf.options
 
+- name: Check bind config
+  command: "named-checkconf /etc/bind/named.conf"
+
+- name: Check bind config
+  command: "named-checkzone {{ item }} /etc/bind/db.{{ item }}"
+  with_items:
+    - "corp"
+    - "global.corp"
+
+
 - name: Restart bind
   service:
     name: bind9
