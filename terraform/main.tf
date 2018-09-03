@@ -236,7 +236,7 @@ resource "aws_instance" "central-dns01" {
   private_ip              = "10.0.10.100"
 
   tags {
-    Name                  = "central-dns01"
+    Name                  = "Central DNS 01"
   }
 }
 
