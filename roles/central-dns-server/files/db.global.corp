@@ -13,7 +13,7 @@ $TTL    5m
 
 ;
 @       IN      NS      central-dns01.global.corp.
-@       IN      A       {{ hostvars['central-dns01']['ansible_host'] }}
+@       IN      A       10.0.10.100
 @       IN      AAAA    ::1
 
 
