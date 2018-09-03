@@ -165,6 +165,53 @@ resource "aws_security_group" "demo-private-sg"{
 
 }
 
+# Set up NAT Gateway
+
+resource "aws_eip" "nat-gateway-eip" {
+  vpc = true
+  depends_on = ["aws_internet_gateway.demo-gw"]
+}
+
+resource "aws_nat_gateway" "demo-nat" {
+  allocation_id = "${aws_eip.nat-gateway-eip.id}"
+  subnet_id = "${aws_subnet.public_subnet.id}"
+  depends_on = ["aws_internet_gateway.demo-gw"]
+}
+
+resource "aws_route_table" "demo-private-rt" {
+  vpc_id = "${aws_vpc.demo_vpc.id}"
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = "${aws_nat_gateway.demo-nat.id}"
+  }
+
+  tags {
+    Name = "Private Subnet RT"
+  }
+}
+
+resource "aws_route_table_association" "demo-central-rt" {
+  subnet_id = "${aws_subnet.central_subnet.id}"
+  route_table_id = "${aws_route_table.demo-private-rt.id}"
+}
+resource "aws_route_table_association" "demo-alpha-rt" {
+  subnet_id = "${aws_subnet.alpha_subnet.id}"
+  route_table_id = "${aws_route_table.demo-private-rt.id}"
+}
+resource "aws_route_table_association" "demo-beta-rt" {
+  subnet_id = "${aws_subnet.beta_subnet.id}"
+  route_table_id = "${aws_route_table.demo-private-rt.id}"
+}
+resource "aws_route_table_association" "demo-gamma-rt" {
+  subnet_id = "${aws_subnet.gamma_subnet.id}"
+  route_table_id = "${aws_route_table.demo-private-rt.id}"
+}
+resource "aws_route_table_association" "demo-delta-rt" {
+  subnet_id = "${aws_subnet.delta_subnet.id}"
+  route_table_id = "${aws_route_table.demo-private-rt.id}"
+}
+
 # Expose various network stuff
 
 output "demo_vpc_id" {
