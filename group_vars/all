@@ -37,3 +37,5 @@ delta_subnet_id:                  "subnet-0c6228633fde0e46a"
 
 template_base_ami:                "ami-0552e3455b9bc8d50"
 internal_sg:                      "demo_internal_sg"
+
+template_ami:                     "ami-0bb4721ef78f8413c"
