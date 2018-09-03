@@ -1,0 +1,7 @@
+---
+
+- name: Perform a basic apt-get update
+  raw: apt-get update
+
+- name: Ensure Ansible dependencies are in place
+  raw: apt-get install python-minimal aptitude -y
