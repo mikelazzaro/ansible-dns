@@ -22,7 +22,9 @@ central_dns_hostname:             "central-dns01.global.corp.domain"
 central_dns_ip:                   "10.0.10.100"
 template_ip:                      "10.0.10.99"
 
-# Fill in with data returned by Terraform
+# Fill in with individual data
+# TODO: Need to find a better way to manage this!
+
 #central_subnet_id:                "xxxxxxxxxxxxxxxxx"
 #alpha_subnet_id:                  "xxxxxxxxxxxxxxxxx"
 #beta_subnet_id:                   "xxxxxxxxxxxxxxxxx"
