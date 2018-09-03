@@ -1,0 +1,23 @@
+;
+; BIND data file for global.corp zone.
+;
+
+$TTL    5m
+@       IN      SOA     central-dns01.global.corp. root.central-dns01.global.corp. (
+                            1               ; Serial
+                            603800          ; Refresh
+                            86400           ; Retry
+                            2419200         ; Expire
+                            604800          ; Negative Cache TTL
+                        )
+
+;
+@       IN      NS      central-dns01.global.corp.
+@       IN      A       {{ hostvars['central-dns01']['ansible_host'] }}
+@       IN      AAAA    ::1
+
+
+; Local DNS records
+
+api.corp.               IN      CNAME   alpha-api-testing.global.corp.
+db.corp.                IN      CNAME   alpha-api-testing.global.corp.

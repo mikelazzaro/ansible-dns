@@ -9,3 +9,21 @@
     - bind9utils
     - dnsutils
 #    - bind9-host
+
+- name: Deploy static config files
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/bind/{{ item }}"
+    owner: root
+    group: bind
+    mode: "0644"
+  with_items:
+    - db.corp
+    - db.global.corp
+    - named.conf.local
+    - named.conf.options
+
+- name: Restart bind
+  service:
+    name: bind9
+    state: restarted
