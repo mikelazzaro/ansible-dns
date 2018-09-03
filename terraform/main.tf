@@ -226,6 +226,20 @@ resource "aws_security_group" "demo-internal-sg"{
 #   Central DNS setup
 ##############################################
 
+resource "aws_instance" "central-dns01" {
+
+  ami                     = "${data.aws_ami.ubuntu_1604.id}"
+  instance_type           = "t2.micro"
+  key_name                = "ansible"
+  vpc_security_group_ids  = ["${aws_security_group.demo-internal-sg.id}"]
+  subnet_id               = "${module.vpc.central_subnet_id}"
+  private_ip              = "10.0.10.100"
+
+  tags {
+    Name                  = "central-dns01"
+  }
+}
+
 #
 #   Output settings
 ##############################################
