@@ -10,6 +10,14 @@
     - dnsutils
 #    - bind9-host
 
+- name: Modify resolv.conf generation process
+  copy:
+    src: "resolvconf_head"
+    dest: "/etc/resolvconf/resolv.conf.d/head"
+    owner: root
+    group: root
+    mode: "0644"
+
 - name: Deploy static config files
   copy:
     src: "{{ item }}"
