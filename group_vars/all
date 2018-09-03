@@ -1,4 +1,4 @@
-ansible_private_key_file:         "~/.ssh/dns_servers"
+ansible_private_key_file:         "~/.ssh/ansible.pem"
 ansible_user:                     "ansible"
 
 aws_region:                       "us-east-2"
