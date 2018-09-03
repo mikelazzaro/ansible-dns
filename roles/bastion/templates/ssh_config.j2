@@ -7,24 +7,24 @@ Host    *
 Host template
     HostName={{ template_ip }}
     User=ubuntu
-    IdentityFile=~/.ssh/human
+    IdentityFile=~/.ssh/human.pem
 
 Host template-ansible
     HostName={{ template_ip }}
     User=ansible
-    IdentityFile=~/.ssh/ansible
+    IdentityFile=~/.ssh/ansible.pem
 
 Host central-dns01
     HostName={{ hostvars['central-dns01']['ansible_host'] }}
     User=ubuntu
-    IdentityFile=~/.ssh/human
+    IdentityFile=~/.ssh/ansible.pem
 
 Host alpha-dns01
     HostName={{ hostvars['alpha-dns01']['ansible_host'] }}
     User=ubuntu
-    IdentityFile=~/.ssh/human
+    IdentityFile=~/.ssh/ansible.pem
 
 Host alpha-dns02
     HostName={{ hostvars['alpha-dns02']['ansible_host'] }}
     User=ubuntu
-    IdentityFile=~/.ssh/human
+    IdentityFile=~/.ssh/ansible.pem
