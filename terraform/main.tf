@@ -27,8 +27,28 @@ module "vpc" {
 }
 
 #
-#   Bastion setup
+#   EC2 instance setup (bastion & central DNS)
 ##############################################
+
+data aws_ami "ubuntu_1604" {
+  most_recent = true
+
+  filter {
+    name = "name"
+
+    values = [
+      "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+    ]
+  }
+
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  # Canonical
+  owners = ["099720109477"]
+}
 
 # Define the security group & IAM roles for bastion server
 resource "aws_security_group" "demo-bastion-sg"{
@@ -109,7 +129,7 @@ resource "aws_iam_role_policy" "basion_role_policy" {
 # Set up bastion instance
 resource "aws_instance" "bastion" {
   # TODO - Organize!
-  ami           = "ami-0552e3455b9bc8d50"
+  ami           = "${data.aws_ami.ubuntu_1604.id}"
   instance_type = "t2.micro"
 //  key_name = "${var.human_keypair_name}"
   key_name = "human"
@@ -200,6 +220,11 @@ resource "aws_security_group" "demo-internal-sg"{
   }
 
 }
+
+
+#
+#   Central DNS setup
+##############################################
 
 #
 #   Output settings
