@@ -9,9 +9,9 @@
 zone "corp" {
     type master;
     file "/etc/bind/db.corp";
-}
+};
 
 zone "global.corp" {
     type master;
     file "/etc/bind/db.global.corp";
-}
+};
