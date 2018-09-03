@@ -1,0 +1,10 @@
+---
+
+- name: Install various required packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - bind9
+    - bind9-host
+    - bind9-utils
