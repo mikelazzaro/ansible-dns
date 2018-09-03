@@ -9,3 +9,11 @@
     - standard
     - user-friendly
     - bastion
+
+- name: Configure central DNS server
+  hosts: central-dns01
+  become: yes
+  gather_facts: yes
+  roles:
+    - standard
+    - central-dns-server
