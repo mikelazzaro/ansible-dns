@@ -12,12 +12,13 @@ $TTL    5m
                         )
 
 ;
-@       IN      NS      central-dns01.global.corp.
+@       IN      NS      central-dns01.corp.
 @       IN      A       10.0.10.100
 @       IN      AAAA    ::1
 
 
 ; Local DNS records
 
+central-dns01.corp.     IN      A       10.0.10.100
 api.corp.               IN      CNAME   alpha-api-testing.global.corp.
 db.corp.                IN      CNAME   alpha-api-testing.global.corp.
