@@ -19,7 +19,7 @@
 - name: Ensure SSH key permissions are correct
   file:
     path: "/home/ubuntu/.ssh/{{ item }}"
-    state: present
+    state: touch
     owner: ubuntu
     group: ubuntu
     mode: "0400"
