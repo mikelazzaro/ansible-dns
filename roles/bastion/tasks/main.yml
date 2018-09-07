@@ -29,10 +29,10 @@
   register: ssh_keys
   ignore_errors: true
 
-- fail:
+- name: Fail helpfully if problem with SSH keys
+  fail:
     msg: "Problem with SSH key files. Did you copy over the required keys to the bastion host?"
   when: ssh_keys is failed
-
 
 - name: Install various AWS dependencies
   apt:
