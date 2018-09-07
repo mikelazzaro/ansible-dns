@@ -3,7 +3,7 @@
 #   Variable setup
 ##############################################
 
-variable "bastion_public_ip" {}
+//variable "bastion_public_ip" {}
 //variable "human_keypair_name" {}
 //variable "ansible_keypair_name" {}
 
@@ -162,14 +162,24 @@ resource "aws_instance" "bastion" {
   }
 }
 
-data aws_eip "bastion_eip" {
-  public_ip = "${var.bastion_public_ip}"
+//data aws_eip "bastion_eip" {
+//  public_ip = "${var.bastion_public_ip}"
+//}
+
+resource "aws_eip" "bastion_eip" {
+  vpc = true
+  instance = "${aws_instance.bastion.id}"
 }
 
-resource "aws_eip_association" "bastion_eip" {
-  instance_id = "${aws_instance.bastion.id}"
-  allocation_id = "${data.aws_eip.bastion_eip.id}"
-}
+//resource "aws_eip" "bastion_eip" {
+//  vpc = true
+//
+//}
+//
+//resource "aws_eip_association" "bastion_eip_assoc" {
+//  instance_id = "${aws_instance.bastion.id}"
+//  allocation_id = "${data.aws_eip.bastion_eip.id}"
+//}
 
 
 resource "aws_security_group" "demo-internal-sg"{
@@ -244,9 +254,9 @@ resource "aws_instance" "central-dns01" {
 #   Output settings
 ##############################################
 
-//output "bastion_ip" {
-//  value = "${aws_eip_association.bastion_eip.public_ip}"
-//}
+output "bastion_ip" {
+  value = "${aws_eip.bastion_eip.public_ip}"
+}
 
 output "public_subnet_id" {
   value = "${module.vpc.public_subnet_id}"
