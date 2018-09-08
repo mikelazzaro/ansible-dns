@@ -3,3 +3,4 @@
 # Location-specific settings
 api_server_ip:            "10.100.20.25"
 api_server_hostname:      "beta01.global.corp.domain"
+aws_subnet_id:            "{{ beta_subnet_id }}"
