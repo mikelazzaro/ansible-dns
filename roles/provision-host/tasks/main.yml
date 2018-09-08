@@ -1,7 +1,8 @@
 ---
 
 - name: Ensure host exists
-  ec2:
+  local_action: ec2
+  args:
     instance_type: "{{ aws_instance_type }}"
     image: "{{ aws_ami }}"
     region: "{{ aws_region }}"
