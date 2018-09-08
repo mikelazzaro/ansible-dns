@@ -10,11 +10,11 @@
 zone "corp" {
     type    master;
     file    "{{ dns_config_folder }}/db.corp";
-}
+};
 
 zone "global.corp" {
     type forward;
     forwarders {
         {{ central_dns_ip }};
-    }
-}
+    };
+};
