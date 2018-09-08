@@ -39,9 +39,9 @@
     name: bind9
     state: restarted
 
-- name: Pause to allow server to pull zone file from central DNS server
-  pause:
-    seconds: 30
+#- name: Pause to allow server to pull zone file from central DNS server
+#  pause:
+#    seconds: 30
 
 # Needed for on-prem Ubuntu-based templates, but
 #   may not needed for AWS
