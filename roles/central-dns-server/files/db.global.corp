@@ -4,7 +4,7 @@
 
 $TTL    5m
 @       IN      SOA     central-dns01.global.corp. root.central-dns01.global.corp. (
-                            2               ; Serial
+                            3               ; Serial
                             603800          ; Refresh
                             86400           ; Retry
                             2419200         ; Expire
@@ -19,7 +19,7 @@ $TTL    5m
 
 ; Global DNS records
 
-api.global.corp.                    IN      CNAME    api.corp.
+api.global.corp.                    IN      CNAME   api.corp.
 db.global.corp.                     IN      CNAME   db.corp.
 
 central-dns01.global.corp.          IN      A       10.0.10.100
