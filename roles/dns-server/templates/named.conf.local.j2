@@ -7,12 +7,12 @@
 //                                                                                  //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
-zone "corp.localdomain" IN {
+zone "corp" IN {
     type    master;
     file    "{{ dns_config_folder }}/db.corp"
 }
 
-zone "global.corp.domain" IN {
+zone "global.corp" IN {
     type forward;
     forwarders {
         {{ central_dns_ip }};
