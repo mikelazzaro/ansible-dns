@@ -1,0 +1,4 @@
+---
+
+aws_security_group_name:          "demo_internal_sg"
+aws_ssh_key:                      "ansible"

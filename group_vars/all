@@ -3,8 +3,6 @@ ansible_user:                     "ansible"
 
 aws_region:                       "us-east-2"
 
-aws_security_group_name:          "demo_internal_sg"
-
 timezone:                         "America/New_York"
 ntp_server:                       ""
 
