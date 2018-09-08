@@ -26,6 +26,9 @@
     - named.conf.local
     - named.conf.options
 
+- name: Check config file
+  command: "named-checkconf {{ dns_config_folder }}/named.conf"
+
 - name: Deploy zone files
   template:
     src: db.corp.j2
