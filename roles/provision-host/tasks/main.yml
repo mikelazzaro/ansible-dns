@@ -11,10 +11,6 @@
 - set_fact:
     subnet_id: "{{ subnet_facts.subnets[0].id }}"
 
-- name: Show subnet id
-  debug:
-    msg: "Subnet ID: {{ subnet_id }}"
-
 - name: Ensure host exists
   local_action: ec2
   args:
