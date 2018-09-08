@@ -1,0 +1,11 @@
+---
+
+- name: Provision template server
+  hosts: dns_servers
+  connection: local
+  become: no
+  gather_facts: no
+  vars:
+    private_ip_address: "{{ ansible_host }}"
+  roles:
+    - terminate-host

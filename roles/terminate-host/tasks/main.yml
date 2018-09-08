@@ -1,0 +1,14 @@
+---
+
+- name: Terminate any running instances
+  local_action: ec2
+  args:
+    instance_type: "{{ aws_instance_type }}"
+    image: "{{ aws_ami }}"
+    region: "{{ aws_region }}"
+    vpc_subnet_id: "{{ aws_subnet_id }}"
+    exact_count: 0
+    count_tag:
+      Name: "{{ aws_name_tag }}"
+    wait: yes
+  register: ec2
