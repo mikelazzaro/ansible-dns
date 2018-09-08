@@ -19,10 +19,10 @@ $TTL    5m
                             {{ dns_param_negative_cache_ttl }}      ; Negative Cache TTL
 
 @   IN  NS  {{ hostname }}.corp.
-@   IN  A   {{ ansible_default_ip4.address }}
+@   IN  A   {{ ansible_host }}
 @   IN  AAAA    ::1
 
-{{ hostname }}.corp.            IN  A   {{ ansible_default_ipv4.address }}
+{{ hostname }}.corp.            IN  A   {{ ansible_host }}
 
 api.corp.                       IN  A   {{ api_server_ip }}
 media.corp.                     IN  A   {{ api_server_ip }}
