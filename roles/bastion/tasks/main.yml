@@ -67,3 +67,6 @@
     owner: root
     group: root
     mode: "0644"
+
+- name: Force rebuild of resolv.conf
+  command: "resolvconf -u"
