@@ -9,7 +9,8 @@
     vpc_subnet_id: "{{ central_subnet_id }}"
     group: "{{ aws_security_group_name }}"
     key_name: "{{ aws_ssh_key }}"
-    instance_tags: "{{ aws_tags }}"
+    instance_tags:
+      Name: "{{ aws_name_tag }}"
     assign_public_ip: no
     private_ip: "{{ template_ip }}"
     exact_count: 1
