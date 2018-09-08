@@ -12,6 +12,7 @@
   gather_facts: yes
   roles:
     - standard
+    - user-friendly
     - motd-warning
 #    - no-apparmor
     - dns-server
