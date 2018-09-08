@@ -1,9 +1,5 @@
 ---
 
-- include_tasks: apparmor.yml
-
-#- include_tasks: motd.yml
-
 # Always want the latest versions of everything installed
 - name: Update all packages to latest
   apt:

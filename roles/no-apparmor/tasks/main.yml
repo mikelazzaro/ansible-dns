@@ -12,10 +12,9 @@
 # Note: fails if no profiles exist, which will happen after the first run
 #
 # Note 2: apparmor uses the 'service' syntax, but 'teardown' isn't supported by
-#         the Ansible service module, so we can ignore the warning
+#         Ansible's service module, so we can ignore the warning
 - name: Remove any apparmor profiles
   command: "service apparmor teardown"
-#  args:
     warn: no
   ingore_errors: yes
 

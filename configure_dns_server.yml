@@ -13,4 +13,6 @@
   roles:
     - standard
     - motd-warning
+    - no-apparmor
 #    - dns_server
+#    - dns-server-tests
