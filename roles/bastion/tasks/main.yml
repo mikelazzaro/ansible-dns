@@ -47,6 +47,7 @@
     state: latest
   with_items:
     - boto
+    - boto3
 
 - name: Make sure ansible config folder exists
   file:
