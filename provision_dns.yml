@@ -5,6 +5,8 @@
   connection: local
   become: no
   gather_facts: no
+  vars:
+    private_ip_address: "{{ ansible_host }}"
   roles:
     - provision-host
 #  role:

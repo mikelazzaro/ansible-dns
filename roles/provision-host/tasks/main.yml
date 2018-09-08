@@ -12,7 +12,7 @@
     instance_tags:
       Name: "{{ aws_name_tag }}"
     assign_public_ip: no
-    private_ip: "{{ template_ip }}"
+    private_ip: "{{ private_ip_address }}"
     exact_count: 1
     count_tag:
       Name: "{{ aws_name_tag }}"
