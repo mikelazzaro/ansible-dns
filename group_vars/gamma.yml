@@ -4,3 +4,4 @@
 api_server_ip:            "10.100.30.25"
 api_server_hostname:      "gamma01.global.corp.domain"
 aws_subnet_id:            "{{ gamma_subnet_id }}"
+aws_subnet_name:          "Gamma Subnet"
