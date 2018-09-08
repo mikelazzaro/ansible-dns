@@ -28,11 +28,11 @@
 
 - name: Deploy zone files
   template:
-    src: db.corp.domain.j2
-    dest: "{{ dns_config_folder }}/db.corp.domain"
+    src: db.corp.j2
+    dest: "{{ dns_config_folder }}/db.corp"
 
 - name: Check local zone file
-  command: "named-checkzone corp.domain {{ dns_config_folder }}/db.corp.domain"
+  command: "named-checkzone corp {{ dns_config_folder }}/db.corp"
 
 - name: Restart bind
   service:
