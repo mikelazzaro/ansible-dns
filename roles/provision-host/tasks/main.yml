@@ -16,5 +16,5 @@
     exact_count: 1
     count_tag:
       Name: "{{ aws_name_tag }}"
-  wait: yes
+    wait: yes
   register: ec2
