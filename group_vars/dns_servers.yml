@@ -5,6 +5,8 @@ aws_ssh_key:                      "ansible"
 aws_instance_type:                "t2.micro"
 aws_ami:                          "{{ template_ami }}"
 
+named_log_folder:                 "/var/log/named"
+
 log_channels:
   - default
   - general
