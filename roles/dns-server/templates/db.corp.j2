@@ -12,16 +12,16 @@
 ;
 
 $TTL    5m
-@   IN  SOA {{ hostname }}.global.corp.   root.{{ hostname }}.global.corp. (
+@       IN      SOA     {{ hostname }}.global.corp.   root.{{ hostname }}.global.corp. (
                             {{ ansible_date_time.epoch }}           ; Serial
                             {{ dns_param_refresh }}                 ; Refresh
                             {{ dns_param_expire }}                  ; Expire
                             {{ dns_param_negative_cache_ttl }}      ; Negative Cache TTL
-                    )
+                         )
 
-@   IN  NS  {{ hostname }}.corp.
-@   IN  A   {{ ansible_host }}
-@   IN  AAAA    ::1
+@       IN      NS      {{ hostname }}.corp.
+@       IN      A       {{ ansible_host }}
+@       IN      AAAA    ::1
 
 {{ hostname }}.corp.            IN  A   {{ ansible_host }}
 
