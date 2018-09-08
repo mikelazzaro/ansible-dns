@@ -8,13 +8,20 @@
       "tag:Name": "{{ aws_subnet_name }}"
   register: subnet_facts
 
+- set_fact:
+    subnet_id: "{{ subnet_facts.subnets[0].id }}"
+
+- name: Show subnet id
+  debug:
+    msg: "Subnet ID: {{ subnet_id }}"
+
 - name: Ensure host exists
   local_action: ec2
   args:
     instance_type: "{{ aws_instance_type }}"
     image: "{{ aws_ami }}"
     region: "{{ aws_region }}"
-    vpc_subnet_id: "{{ aws_subnet_id }}"
+    vpc_subnet_id: "{{ subnet_id }}"
     group: "{{ aws_security_group_name }}"
     key_name: "{{ aws_ssh_key }}"
     instance_tags:
