@@ -14,7 +14,7 @@ zone "corp" {
 
 zone "global.corp" {
     type slave;
-    file "{{ dns_config_slave_folder }}/db.global.corp";
+    file "{{ named_slave_folder }}/db.global.corp";
     masters {
         {{ central_dns_ip }};
     };
