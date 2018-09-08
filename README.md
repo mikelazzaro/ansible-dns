@@ -10,10 +10,6 @@ Slides for the presentation can be found at:
 
 ## Branches
 
-1. master - Basic
-1. v2 -
-1. v3 -
-1.
-1. vX- Completed version, with all bells & whistles!
-
+1. master - basic setup
+2. testing - added support for testing environments
 
