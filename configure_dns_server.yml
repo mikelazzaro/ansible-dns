@@ -12,3 +12,5 @@
   gather_facts: yes
   roles:
     - standard
+    - motd-warning
+#    - dns_server
