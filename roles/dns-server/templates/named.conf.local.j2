@@ -15,6 +15,6 @@ zone "corp.localdomain" IN {
 zone "global.corp.domain" IN {
     type forward;
     forwarders {
-        {{ central_dns_server_ip }};
+        {{ central_dns_ip }};
     }
 }

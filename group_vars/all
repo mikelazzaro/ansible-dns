@@ -18,7 +18,10 @@ dns_param_retry:                  "86400"
 dns_param_expire:                 "2419200"
 dns_param_negative_cache_ttl:     "604800"
 
-central_dns_hostname:             "central-dns01.global.corp.domain"
+open_dns_ip_1:                    "208.67.222.222"
+open_dns_ip_2:                    "208.67.220.220"
+
+central_dns_hostname:             "central-dns01.global.corp"
 central_dns_ip:                   "10.0.10.100"
 template_ip:                      "10.0.10.99"
 
