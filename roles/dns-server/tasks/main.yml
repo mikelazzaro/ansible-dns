@@ -11,7 +11,7 @@
     state: latest
   with_items:
     - bind9
-    - bind9-utils
+    - bind9utils
     - bind9-doc
 
 - name: Deploy bind config files
