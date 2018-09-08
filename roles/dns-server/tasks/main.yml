@@ -25,6 +25,7 @@
     - named.conf
     - named.conf.local
     - named.conf.options
+    - named.conf.logging
 
 - name: Check config file
   command: "named-checkconf {{ dns_config_folder }}/named.conf"
