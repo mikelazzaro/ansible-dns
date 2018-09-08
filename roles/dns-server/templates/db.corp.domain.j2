@@ -12,19 +12,20 @@
 ;
 
 $TTL    5m
-@   IN  SOA {{ hostname }}.global.corp.domain   root.{{ hostname }}.global.corp.domain. (
+@   IN  SOA {{ hostname }}.global.corp.   root.{{ hostname }}.global.corp. (
                             {{ ansible_date_time.epoch }}           ; Serial
                             {{ dns_param_refresh }}                 ; Refresh
                             {{ dns_param_expire }}                  ; Expire
                             {{ dns_param_negative_cache_ttl }}      ; Negative Cache TTL
 
-@   IN  NS  {{ hostname }}.corp.domain.
+@   IN  NS  {{ hostname }}.corp.
 @   IN  A   {{ ansible_default_ip4.address }}
 @   IN  AAAA    ::1
 
-{{ hostname }}.otg.localdomain. IN  A   {{ ansible_default_ipv4.address }}
+{{ hostname }}.corp.            IN  A   {{ ansible_default_ipv4.address }}
 
-api.corp.domain.                IN  A   {{ api_server_ip }}
-media.corp.domain.              IN  A   {{ api_server_ip }}
+api.corp.                       IN  A   {{ api_server_ip }}
+media.corp.                     IN  A   {{ api_server_ip }}
+db.corp.                        IN  A   {{ api_server_ip }}
 
 {{ central_dns_hostname }}.     IN  A   {{ central_dns_ip }}
