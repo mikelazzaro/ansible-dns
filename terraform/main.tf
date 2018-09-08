@@ -164,7 +164,7 @@ resource "aws_instance" "bastion" {
   }
 
   provisioner "file" {
-    source = "${var.local_ssh_folder}/.ssh/human.pem"
+    source = "${var.local_ssh_folder}/human.pem"
     destination = "/home/ubuntu/.ssh/human.pem"
 
     connection {
@@ -175,7 +175,7 @@ resource "aws_instance" "bastion" {
   }
 
   provisioner "file" {
-    source = "${var.local_ssh_folder}/.ssh/ansible.pem"
+    source = "${var.local_ssh_folder}/ansible.pem"
     destination = "/home/ubuntu/.ssh/ansible.pem"
 
     connection {
@@ -186,7 +186,7 @@ resource "aws_instance" "bastion" {
   }
 
   provisioner "file" {
-    source = "${var.local_ssh_folder}/.ssh/ansible.pub"
+    source = "${var.local_ssh_folder}/ansible.pub"
     destination = "/home/ubuntu/.ssh/ansible.pub"
 
     connection {
