@@ -3,6 +3,7 @@
 - name: Get subnet ID
   local_action: ec2_vpc_subnet_facts
   args:
+    region: "{{ aws_region }}"
     filters:
       "tag:Name": "{{ aws_subnet_name }}"
   register: subnet_facts
