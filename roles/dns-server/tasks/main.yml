@@ -37,7 +37,7 @@
 - name: Restart bind
   service:
     name: bind9
-    state: restart
+    state: restarted
 
 - name: Pause to allow server to pull zone file from central DNS server
   pause:
