@@ -50,3 +50,12 @@
 #   may not needed for AWS
 
 #- include_tasks: firewall.yml
+
+- name: Modify resolv.conf generation process to include localhost
+  copy:
+    src: "resolvconf_head"
+    dest: "/etc/resolvconf/resolv.conf.d/head"
+    owner: root
+    group: root
+    mode: "0644"
+

@@ -59,3 +59,11 @@
     url: "https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py"
     dest: "/etc/ansible/hosts"
     mode: "755"
+
+- name: Modify resolv.conf generation process to include central DNS server
+  copy:
+    src: "resolvconf_head"
+    dest: "/etc/resolvconf/resolv.conf.d/head"
+    owner: root
+    group: root
+    mode: "0644"
