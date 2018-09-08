@@ -6,6 +6,7 @@
 //variable "bastion_public_ip" {}
 //variable "human_keypair_name" {}
 //variable "ansible_keypair_name" {}
+variable "local_ssh_folder" {}
 
 
 #
@@ -151,13 +152,47 @@ resource "aws_instance" "bastion" {
       "sudo apt-get update",
       "sudo apt-get install python-pip -y",
       "pip install ansible",
-      "git clone https://github.com/mikelazzaro/ansible-dns.git"
+      "git clone https://github.com/mikelazzaro/ansible-dns.git",
+      "mkdir -p /home/ubuntu/.ssh"
     ]
 
     connection {
       type = "ssh"
       user = "ubuntu"
-      private_key = "${file("~/.ssh/human.pem")}"
+      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
+    }
+  }
+
+  provisioner "file" {
+    source = "${var.local_ssh_folder}/.ssh/human.pem"
+    destination = "/home/ubuntu/.ssh/human.pem"
+
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
+    }
+  }
+
+  provisioner "file" {
+    source = "${var.local_ssh_folder}/.ssh/ansible.pem"
+    destination = "/home/ubuntu/.ssh/ansible.pem"
+
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
+    }
+  }
+
+  provisioner "file" {
+    source = "${var.local_ssh_folder}/.ssh/ansible.pub"
+    destination = "/home/ubuntu/.ssh/ansible.pub"
+
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
     }
   }
 }
