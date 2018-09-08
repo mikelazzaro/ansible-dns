@@ -1,5 +1,6 @@
 ---
 
-aws_security_group_name:          "demo_internal_sg"
+aws_security_group_name:          "{{ internal_sg }}"
 aws_ssh_key:                      "ansible"
 aws_instance_type:                "t2.micro"
+aws_ami:                          "{{ template_ami }}"
