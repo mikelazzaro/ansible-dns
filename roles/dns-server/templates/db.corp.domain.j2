@@ -17,6 +17,7 @@ $TTL    5m
                             {{ dns_param_refresh }}                 ; Refresh
                             {{ dns_param_expire }}                  ; Expire
                             {{ dns_param_negative_cache_ttl }}      ; Negative Cache TTL
+                    )
 
 @   IN  NS  {{ hostname }}.corp.
 @   IN  A   {{ ansible_host }}
