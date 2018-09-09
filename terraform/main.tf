@@ -106,7 +106,8 @@ resource "aws_iam_instance_profile" "bastion_profile" {
 data "aws_iam_policy_document" "basion_role_policy_document" {
   statement {
     effect = "Allow"
-    resources = ["arn:aws:ec2:*"]
+//    resources = ["arn:aws:ec2:*"]
+    resources = ["*"]
     actions = ["ec2:*"]
   }
 }
