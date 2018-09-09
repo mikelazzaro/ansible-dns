@@ -15,7 +15,7 @@
   register: reboot_notifier
 
 - name: Reboot if necessary
-  cmmand: "shutdown -r +1 'Rebooting...'"
+  command: "shutdown -r +1 'Rebooting...'"
   when: reboot_notifier.stat.exists == true
   ignore_errors: True
 
