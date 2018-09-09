@@ -40,8 +40,13 @@
     - "corp"
     - "global.corp"
 
-
 - name: Restart bind
   service:
     name: bind9
     state: restarted
+
+- name: Basic check of local domain
+  command: "nslookup api.corp 127.0.0.1"
+
+- name: Basic check of global domain
+  command: "nslookup api.global.corp 127.0.0.1"
