@@ -46,5 +46,6 @@ Usage:
 Teardown:
 
 1. Terminate DNS servers (via script)
+1. Deregister template AMI
 1. Run Terraform destroy
 
