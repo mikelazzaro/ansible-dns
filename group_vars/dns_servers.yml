@@ -30,8 +30,8 @@ log_channels:
   - rpz
   - rate-limit
   - query-errors
-  - zoneload
-  - edns-disabled
-  - cname
+#  - zoneload
+#  - edns-disabled
+#  - cname
 # Don't need to log all queries
 #  - queries
