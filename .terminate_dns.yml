@@ -7,5 +7,7 @@
   gather_facts: no
   vars:
     private_ip_address: "{{ ansible_host }}"
+    # Doesn't really matter, just need something here
+    aws_ami: "ami-0552e3455b9bc8d50"
   roles:
     - terminate-host
