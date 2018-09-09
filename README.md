@@ -20,9 +20,9 @@ Slides for the presentation can be found [here](https://docs.google.com/presenta
 
 Prerequisites:
 
-1. Have AWS account set up
-1. Setup of awscli tools, including AWS access keys
-1. Local Terraform setup
+1. AWS account set up
+1. [AWS cli tools](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) set up, including AWS access keys
+1. [Terraform](https://www.terraform.io/intro/getting-started/install.html) installed
 
 Manual setup:
 
