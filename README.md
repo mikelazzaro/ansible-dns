@@ -4,7 +4,7 @@ This is the demo code for "Phoenix Servers with Ansible: or How I Learned to Sto
 
 ## Presentation
 
-Slides for the presentation can be found at:
+Slides for the presentation can be found [here](https://docs.google.com/presentation/d/1qA5vXhKMeg2iOgg4lIYN6OTwpa46EzXhr70U1a05Z0g/edit?usp=sharing).
 
 (TODO)
 
