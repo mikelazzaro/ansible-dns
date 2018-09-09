@@ -10,3 +10,5 @@ aws_tags: {
 }
 
 aws_security_group_name: "{{ internal_sg }}"
+aws_subnet_name: "Central Subnet"
+private_ip_address: "{{ template_ip }}"

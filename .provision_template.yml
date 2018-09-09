@@ -3,23 +3,9 @@
 - name: Provision template server
   hosts: localhost
   connection: local
+  become: no
+  gather_facts: no
   vars_files:
     - host_vars/template.yml
-  tasks:
-
-    - name: Ensure exactly 1 template instance exists
-      ec2:
-        instance_type: "{{ aws_instance_type }}"
-        image: "{{ aws_ami }}"
-        region: "{{ aws_region }}"
-        vpc_subnet_id: "{{ central_subnet_id }}"
-        group: "{{ aws_security_group_name }}"
-        key_name: "{{ aws_ssh_key }}"
-        instance_tags: "{{ aws_tags }}"
-        assign_public_ip: no
-        private_ip: "{{ template_ip }}"
-        exact_count: 1
-        count_tag:
-          Name: "{{ aws_name_tag }}"
-        wait: yes
-      register: ec2
+  roles:
+    - provision-host
