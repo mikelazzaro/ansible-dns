@@ -3,7 +3,7 @@
 aws_security_group_name:          "{{ internal_sg }}"
 aws_ssh_key:                      "ansible"
 aws_instance_type:                "t2.micro"
-aws_ami:                          "{{ template_ami }}"
+#aws_ami:                          "{{ template_ami }}"
 
 named_log_folder:                 "/var/log/named"
 named_slave_folder:               "{{ dns_config_folder }}/slave_zones"
@@ -30,5 +30,8 @@ log_channels:
   - rpz
   - rate-limit
   - query-errors
+  - zoneload
+  - edns-disabled
+  - cname
 # Don't need to log all queries
 #  - queries
