@@ -29,5 +29,6 @@ log_channels:
   - lame-servers
   - rpz
   - rate-limit
-  - queries
   - query-errors
+# Don't need to log all queries
+#  - queries
