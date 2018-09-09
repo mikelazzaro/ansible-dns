@@ -26,3 +26,6 @@ central_dns_ip:                   "10.0.10.100"
 template_ip:                      "10.0.10.99"
 
 internal_sg:                      "phoenix_internal_sg"
+
+# Most servers will use specific AMI's
+provision_use_latest_ami:         no
