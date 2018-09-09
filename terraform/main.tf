@@ -178,7 +178,6 @@ resource "aws_eip" "bastion_eip" {
   instance = "${aws_instance.bastion.id}"
 }
 
-
 resource "aws_security_group" "phoenix-internal-sg"{
   name = "phoenix_internal_sg"
   description = "Allow SSH, DNS, and ICMP traffic between internal hosts"
@@ -252,26 +251,6 @@ resource "aws_instance" "central-dns01" {
 
 output "bastion_ip" {
   value = "${aws_eip.bastion_eip.public_ip}"
-}
-
-output "public_subnet_id" {
-  value = "${module.vpc.public_subnet_id}"
-}
-
-output "central_subnet_id" {
-  value = "${module.vpc.central_subnet_id}"
-}
-
-output "alpha_subnet_id" {
-  value = "${module.vpc.alpha_subnet_id}"
-}
-
-output "beta_subnet_id" {
-  value = "${module.vpc.beta_subnet_id}"
-}
-
-output "gamma_subnet_id" {
-  value = "${module.vpc.gamma_subnet_id}"
 }
 
 output "delta_subnet_id" {
