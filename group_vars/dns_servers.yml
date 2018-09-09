@@ -35,3 +35,16 @@ log_channels:
 #  - cname
 # Don't need to log all queries
 #  - queries
+
+test_domains:
+  # Fixed IP addresses
+  - { domain: "central-dns01.global.corp", address: "10.0.10.100" }
+  - { domain: "alpha-dns01.global.corp", address: "10.0.10.100" }
+  - { domain: "beta-dns02.global.corp", address: "10.0.10.100" }
+  # Non-fixed
+  - { domain: "{{ upstream_dns_hostname }}", address: "{{ upstream_dns_ip }}" }
+  - { domain: "{{ api_server_hostname }}", address: "{{ api_server_ip }}" }
+  # Authoritative domains
+  - { domain: "api.corp", address: "{{ api_server_ip }}" }
+  - { domain: "db.corp", address: "{{ api_server_ip }}" }
+  - { domain: "media.corp", address: "{{ api_server_ip }}" }

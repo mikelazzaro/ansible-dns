@@ -1,0 +1,37 @@
+---
+
+# Checks to see if DNS server can resolve various domains from a local session
+- name: Basic resolution testing - internal
+  command: "nslookup {{ item }} localhost"
+  with_items:
+    # Local domains
+    - "api.corp."
+    - "db.corp."
+    - "media.corp."
+    # Global domains
+    - "central-dns01.global.corp."
+    - "{{ api_server_hostname }}."
+    - "alpha-dns01.global.corp."
+    # External domains
+    - "google.com."
+    - "otgexp.com."
+
+# Checks to see if DNS server can resolve various domains from an outside host
+- name: Basic resolution testing - external
+  command: "nslookup {{ item }} {{ ansible_host }}"
+  with_items:
+    # Local domains
+    - "api.corp."
+    - "db.corp."
+    - "media.corp."
+    # Global domains
+    - "central-dns01.global.corp."
+    - "{{ api_server_hostname }}."
+    - "alpha-dns01.global.corp."
+    # External domains
+    - "google.com."
+    - "otgexp.com."
+
+- name: Run full set of resolution tests, including checking for correctness
+  include_tasks: check_dns_entry.yml
+  with_items: "{{ test_domains }}"
