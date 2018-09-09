@@ -1,21 +1,21 @@
 [central]
-central-dns01               ansible_host=10.0.10.100
+central-dns01               ansible_host=10.0.10.50
 
 [alpha]
-alpha-dns01                 ansible_host=10.0.20.100
-alpha-dns02                 ansible_host=10.0.20.101
+alpha-dns01                 ansible_host=10.0.20.50
+alpha-dns02                 ansible_host=10.0.20.51
 
 [beta]
-beta-dns01                  ansible_host=10.0.30.100
-beta-dns02                  ansible_host=10.0.30.101
+beta-dns01                  ansible_host=10.0.30.50
+beta-dns02                  ansible_host=10.0.30.51
 
 [gamma]
-gamma-dns01                 ansible_host=10.0.40.100
-gamma-dns02                 ansible_host=10.0.40.101
+gamma-dns01                 ansible_host=10.0.40.50
+gamma-dns02                 ansible_host=10.0.40.51
 
 [delta]
-delta-dns01                 ansible_host=10.0.50.100
-delta-dns02                 ansible_host=10.0.50.101
+delta-dns01                 ansible_host=10.0.50.50
+delta-dns02                 ansible_host=10.0.50.51
 
 
 [primary]
