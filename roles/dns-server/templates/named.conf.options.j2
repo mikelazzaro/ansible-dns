@@ -19,7 +19,7 @@ options {
     listen-on port 53 { any; };
 
     dnssec-enable yes;
-    dnssec-validation no;
+    dnssec-validation yes;
 
     forwarders {
         {{ open_dns_ip_1 }};
