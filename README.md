@@ -11,8 +11,9 @@ Slides for the presentation can be found [here](https://docs.google.com/presenta
 ## Branches
 
 1. master - basic setup
-2. testing - added support for testing environments
-3. complete - all additional stuff added
+1. extras - includes expanded testing, and various other features
+1. test-servers - includes support for testing environments
+1. complete - everything from extras and test-servers
 
 ## Setup Instructions
  
