@@ -16,7 +16,7 @@
 - name: Remove any apparmor profiles
   command: "service apparmor teardown"
 #    warn: no
-  ingore_errors: yes
+  ignore_errors: yes
 
 - name: Disable apparmor
   command: "update-rc.d -f apparmor remove"
