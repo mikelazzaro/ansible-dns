@@ -15,7 +15,7 @@
 #         Ansible's service module, so we can ignore the warning
 - name: Remove any apparmor profiles
   command: "service apparmor teardown"
-#    warn: no
+  warn: no
   ignore_errors: yes
 
 - name: Disable apparmor
