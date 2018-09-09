@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure central DNS server has Ansible prereqs
+- name: Ensure central DNS server has Ansible prereqs (Python 2)
   hosts: central-dns01
   become: yes
   gather_facts: no
