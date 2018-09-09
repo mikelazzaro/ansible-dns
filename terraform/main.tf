@@ -252,7 +252,3 @@ resource "aws_instance" "central-dns01" {
 output "bastion_ip" {
   value = "${aws_eip.bastion_eip.public_ip}"
 }
-
-output "delta_subnet_id" {
-  value = "${module.vpc.delta_subnet_id}"
-}
