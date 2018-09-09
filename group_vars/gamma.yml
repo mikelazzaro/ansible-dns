@@ -1,7 +1,7 @@
 ---
 
 # Location-specific settings
-api_server_ip:            "10.0.30.25"
+api_server_ip:            "10.0.40.25"
 api_server_hostname:      "gamma-api.global.corp"
 aws_subnet_id:            "{{ gamma_subnet_id }}"
 aws_subnet_name:          "Gamma Subnet"
