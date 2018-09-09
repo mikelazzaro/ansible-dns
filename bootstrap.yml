@@ -1,27 +1,5 @@
 ---
 
-- name: Finish configuration of bastion server
-  hosts: localhost
-  connection: local
-  become: yes
-  gather_facts: yes
-  roles:
-    - standard
-    - user-friendly
-    - bastion
+- include: bootstrap-basion-host.yml
 
-- name: Ensure central DNS server has Ansible prereqs
-  hosts: central-dns01
-  become: yes
-  gather_facts: no
-  roles:
-    - ansible-requirements
-
-- name: Configure central DNS server
-  hosts: central-dns01
-  become: yes
-  gather_facts: yes
-  roles:
-    - standard
-    - user-friendly
-    - central-dns-server
+- include: bootstrap-central-dns.yml

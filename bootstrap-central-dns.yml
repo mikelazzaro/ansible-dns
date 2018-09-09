@@ -1,0 +1,17 @@
+---
+
+- name: Ensure central DNS server has Ansible prereqs
+  hosts: central-dns01
+  become: yes
+  gather_facts: no
+  roles:
+    - ansible-requirements
+
+- name: Configure central DNS server
+  hosts: central-dns01
+  become: yes
+  gather_facts: yes
+  roles:
+    - standard
+    - user-friendly
+    - central-dns-server
