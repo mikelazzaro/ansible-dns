@@ -1,5 +1,20 @@
 ---
 
+- name: Get latest AMI
+  ec2_ami_find:
+    name: "{{ provision_latest_ami_pattern }}"
+    owner: "{{ provision_latest_ami_owner }}"
+    sort: name
+    sort_order: descending
+    sort_end: 1
+  when: provision_use_latest_ami
+  register: ami_list
+
+- name: Set aws_ami based on lookup
+  set_fact:
+    aws_ami: "{{ ami_find.results[0].ami_id }}"
+  when: provision_use_latest_ami
+
 - name: Get subnet ID
   local_action: ec2_vpc_subnet_facts
   args:
