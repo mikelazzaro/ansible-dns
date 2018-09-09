@@ -1,5 +1,14 @@
 ---
 
+# TODO: Figure out how to get the same sort behavior via ec2_ami_facts
+#- name: Get latest AMI
+#  ec2_ami_facts:
+#    owner: "{{ provision_latest_ami_owner }}"
+#    filters:
+#      name: "{{ provision_latest_ami_pattern }}"
+#  when: provision_use_latest_ami
+#  register: ami_list
+
 - name: Get latest AMI
   ec2_ami_find:
     name: "{{ provision_latest_ami_pattern }}"
