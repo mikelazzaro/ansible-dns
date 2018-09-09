@@ -30,5 +30,3 @@ template_ip:                      "10.0.10.99"
 
 template_base_ami:                "ami-0552e3455b9bc8d50"
 internal_sg:                      "phoenix_internal_sg"
-
-template_ami:                     "ami-04c4681426d801c06"
