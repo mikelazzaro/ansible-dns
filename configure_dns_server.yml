@@ -16,4 +16,4 @@
     - motd-warning
     - no-apparmor
     - { role: dns-server, tags: ['core'] }
-    - { role: dns-server-tests, tags: ['core', 'testing'] }
+    - { role: dns-server-tests, tags: ['core', 'test'] }
