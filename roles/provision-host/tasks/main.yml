@@ -11,6 +11,7 @@
 
 - name: Get latest AMI
   ec2_ami_find:
+    region: "{{ aws_region }}"
     name: "{{ provision_latest_ami_pattern }}"
     owner: "{{ provision_latest_ami_owner }}"
     sort: name
