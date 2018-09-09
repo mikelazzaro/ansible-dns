@@ -1,6 +1,6 @@
 ---
 
-- name: Provision template server
+- name: Terminate servers
   hosts: dns_servers
   connection: local
   become: no
