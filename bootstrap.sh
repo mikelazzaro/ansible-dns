@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ansible-playbook -i hosts bootstrap.yml
+ansible-playbook -i hosts .bootstrap.yml

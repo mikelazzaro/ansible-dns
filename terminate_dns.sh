@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ansible-playbook -i hosts terminate_dns.yml
+ansible-playbook -i hosts .terminate_dns.yml
