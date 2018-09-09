@@ -61,8 +61,8 @@ resource "aws_security_group" "phoenix-bastion-sg"{
   }
 
   ingress {
-    from_port = 0
-    to_port = 0
+    from_port = -1
+    to_port = -1
     protocol = "icmp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -108,7 +108,6 @@ data "aws_iam_policy_document" "basion_role_policy_document" {
     effect = "Allow"
     resources = ["*"]
     actions = ["*"]
-
   }
 }
 
@@ -117,23 +116,16 @@ resource "aws_iam_role_policy" "basion_role_policy" {
   role = "${aws_iam_role.bastion_role.id}"
 }
 
-//data "aws_ami" "ubuntu_1604" {
-//  most_recent = true
-//
-//}
-
 # Set up bastion instance
 resource "aws_instance" "bastion" {
-  # TODO - Organize!
   ami           = "${data.aws_ami.ubuntu_1604.id}"
   instance_type = "t2.micro"
-//  key_name = "${var.human_keypair_name}"
   key_name = "human"
   vpc_security_group_ids  = ["${aws_security_group.phoenix-bastion-sg.id}"]
+
   # Don't need to specify VPC, since subnet will take care of that
   subnet_id = "${module.vpc.public_subnet_id}"
   private_ip = "10.0.0.5"
-//  public_ip = "${var.bastion_public_ip}"
   associate_public_ip_address = true
 
   iam_instance_profile = "${aws_iam_instance_profile.bastion_profile.id}"
@@ -179,43 +171,17 @@ resource "aws_instance" "bastion" {
       private_key = "${file("${var.local_ssh_folder}/human.pem")}"
     }
   }
-
-  provisioner "file" {
-    source = "${var.local_ssh_folder}/ansible.pub"
-    destination = "/home/ubuntu/.ssh/ansible.pub"
-
-    connection {
-      type = "ssh"
-      user = "ubuntu"
-      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
-    }
-  }
 }
-
-//data aws_eip "bastion_eip" {
-//  public_ip = "${var.bastion_public_ip}"
-//}
 
 resource "aws_eip" "bastion_eip" {
   vpc = true
   instance = "${aws_instance.bastion.id}"
 }
 
-//resource "aws_eip" "bastion_eip" {
-//  vpc = true
-//
-//}
-//
-//resource "aws_eip_association" "bastion_eip_assoc" {
-//  instance_id = "${aws_instance.bastion.id}"
-//  allocation_id = "${data.aws_eip.bastion_eip.id}"
-//}
-
 
 resource "aws_security_group" "phoenix-internal-sg"{
   name = "phoenix_internal_sg"
   description = "Allow SSH, DNS, and ICMP traffic between internal hosts"
-//  vpc_id = "${aws_vpc.phoenix_vpc.id}"
   vpc_id = "${module.vpc.phoenix_vpc_id}"
 
   # SSH
