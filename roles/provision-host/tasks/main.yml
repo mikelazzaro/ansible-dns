@@ -22,7 +22,7 @@
 
 - name: Set aws_ami based on lookup
   set_fact:
-    aws_ami: "{{ ami_find.results[0].ami_id }}"
+    aws_ami: "{{ ami_list.results[0].ami_id }}"
   when: provision_use_latest_ami
 
 - name: Get subnet ID
