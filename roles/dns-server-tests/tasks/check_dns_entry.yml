@@ -4,5 +4,5 @@
 
 - name: Fail if results don't match
   fail:
-    msg: "nslookup worked, but returned '{{ nslookup_result.stdout_lines[-1] }}' instead of expected '{{ item.address }}'"
+    msg: "Query for {{ item.domain }} returned '{{ nslookup_result.stdout_lines[-1] }}' instead of expected '{{ item.address }}'"
   when: item.address not in nslookup_result.stdout_lines[-1]
