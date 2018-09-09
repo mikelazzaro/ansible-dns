@@ -9,6 +9,6 @@
     private_ip_address: "{{ ansible_host }}"
   vars_prompt:
     - name: "aws_ami"
-      prompt: "ID of template AMI?
+      prompt: "ID of template AMI?"
   roles:
     - provision-host
