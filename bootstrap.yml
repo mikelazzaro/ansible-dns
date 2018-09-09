@@ -1,5 +1,5 @@
 ---
 
-- include: bootstrap-basion-host.yml
+- import_playbook: bootstrap-basion-host.yml
 
-- include: bootstrap-central-dns.yml
+- import_playbook: bootstrap-central-dns.yml
