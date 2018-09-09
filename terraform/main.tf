@@ -3,9 +3,6 @@
 #   Variable setup
 ##############################################
 
-//variable "bastion_public_ip" {}
-//variable "human_keypair_name" {}
-//variable "ansible_keypair_name" {}
 variable "local_ssh_folder" {}
 
 
@@ -36,7 +33,6 @@ data aws_ami "ubuntu_1604" {
 
   filter {
     name = "name"
-
     values = [
       "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
     ]
@@ -52,11 +48,10 @@ data aws_ami "ubuntu_1604" {
 }
 
 # Define the security group & IAM roles for bastion server
-resource "aws_security_group" "demo-bastion-sg"{
-  name = "demo_bastion"
+resource "aws_security_group" "phoenix-bastion-sg"{
+  name = "phoenix_bastion"
   description = "Allow SSH & ICMP traffic from all IPs"
-//  vpc_id = "${aws_vpc.demo_vpc.id}"
-  vpc_id = "${module.vpc.demo_vpc_id}"
+  vpc_id = "${module.vpc.phoenix_vpc_id}"
 
   ingress {
     from_port = 22
@@ -80,7 +75,7 @@ resource "aws_security_group" "demo-bastion-sg"{
   }
 
   tags {
-    Name = "Demo Bastion SG"
+    Name = "Phoenix Bastion SG"
   }
 
 }
@@ -134,7 +129,7 @@ resource "aws_instance" "bastion" {
   instance_type = "t2.micro"
 //  key_name = "${var.human_keypair_name}"
   key_name = "human"
-  vpc_security_group_ids  = ["${aws_security_group.demo-bastion-sg.id}"]
+  vpc_security_group_ids  = ["${aws_security_group.phoenix-bastion-sg.id}"]
   # Don't need to specify VPC, since subnet will take care of that
   subnet_id = "${module.vpc.public_subnet_id}"
   private_ip = "10.0.0.5"
@@ -217,11 +212,11 @@ resource "aws_eip" "bastion_eip" {
 //}
 
 
-resource "aws_security_group" "demo-internal-sg"{
-  name = "demo_internal_sg"
+resource "aws_security_group" "phoenix-internal-sg"{
+  name = "phoenix_internal_sg"
   description = "Allow SSH, DNS, and ICMP traffic between internal hosts"
-//  vpc_id = "${aws_vpc.demo_vpc.id}"
-  vpc_id = "${module.vpc.demo_vpc_id}"
+//  vpc_id = "${aws_vpc.phoenix_vpc.id}"
+  vpc_id = "${module.vpc.phoenix_vpc_id}"
 
   # SSH
   ingress {
@@ -261,7 +256,7 @@ resource "aws_security_group" "demo-internal-sg"{
   }
 
   tags {
-    Name = "Demo Internal SG"
+    Name = "Phoenix Internal SG"
   }
 
 }
@@ -276,7 +271,7 @@ resource "aws_instance" "central-dns01" {
   ami                     = "${data.aws_ami.ubuntu_1604.id}"
   instance_type           = "t2.micro"
   key_name                = "ansible"
-  vpc_security_group_ids  = ["${aws_security_group.demo-internal-sg.id}"]
+  vpc_security_group_ids  = ["${aws_security_group.phoenix-internal-sg.id}"]
   subnet_id               = "${module.vpc.central_subnet_id}"
   private_ip              = "10.0.10.100"
 
