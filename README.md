@@ -97,7 +97,7 @@ ssh template
 
 First, create the new ansible user:
 ```bash
-sudo useradd --system --shell /bin/bash --group --gecos 'Ansible automation user' --disabled-password ansible
+sudo adduser --system --shell /bin/bash --group --gecos 'Ansible automation user' --disabled-password ansible
 ``` 
 
 Next, open visudo to update the `ansible` user's sudo rights:
