@@ -102,7 +102,7 @@ sudo adduser --system --shell /bin/bash --group --gecos 'Ansible automation user
 
 Next, open visudo to update the `ansible` user's sudo rights:
 ```bash
-sudo EDITOR=vim visudo /etc/sudoers.d/50-ansible
+sudo EDITOR=vim visudo -f /etc/sudoers.d/50-ansible
 ```
 
 Add the following line, then save and close:
