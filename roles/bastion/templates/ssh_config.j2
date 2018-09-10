@@ -29,6 +29,11 @@ Host alpha-dns02
     User=ansible
     IdentityFile=~/.ssh/ansible.pem
 
+Host alpha-dns01-testing
+    HostName={{ hostvars['alpha-dns01-testing']['ansible_host'] }}
+    User=ansible
+    IdentityFile=~/.ssh/ansible.pem
+
 Host beta-dns01
     HostName={{ hostvars['beta-dns01']['ansible_host'] }}
     User=ansible
@@ -36,6 +41,11 @@ Host beta-dns01
 
 Host beta-dns02
     HostName={{ hostvars['beta-dns02']['ansible_host'] }}
+    User=ansible
+    IdentityFile=~/.ssh/ansible.pem
+
+Host beta-dns01-testing
+    HostName={{ hostvars['beta-dns01-testing']['ansible_host'] }}
     User=ansible
     IdentityFile=~/.ssh/ansible.pem
 
@@ -49,6 +59,11 @@ Host gamma-dns02
     User=ansible
     IdentityFile=~/.ssh/ansible.pem
 
+Host gamma-dns01-testing
+    HostName={{ hostvars['gamma-dns01-testing']['ansible_host'] }}
+    User=ansible
+    IdentityFile=~/.ssh/ansible.pem
+
 Host delta-dns01
     HostName={{ hostvars['delta-dns01']['ansible_host'] }}
     User=ansible
@@ -56,5 +71,10 @@ Host delta-dns01
 
 Host delta-dns02
     HostName={{ hostvars['delta-dns02']['ansible_host'] }}
+    User=ansible
+    IdentityFile=~/.ssh/ansible.pem
+
+Host delta-dns01-testing
+    HostName={{ hostvars['delta-dns01-testing']['ansible_host'] }}
     User=ansible
     IdentityFile=~/.ssh/ansible.pem
