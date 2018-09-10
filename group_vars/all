@@ -22,7 +22,7 @@ open_dns_ip_1:                    "208.67.222.222"
 open_dns_ip_2:                    "208.67.220.220"
 
 central_dns_hostname:             "central-dns01.global.corp"
-central_dns_ip:                   "10.0.10.100"
+central_dns_ip:                   "10.0.10.50"
 template_ip:                      "10.0.10.99"
 
 internal_sg:                      "phoenix_internal_sg"

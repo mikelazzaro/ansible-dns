@@ -246,7 +246,7 @@ resource "aws_instance" "central-dns01" {
   key_name                = "ansible"
   vpc_security_group_ids  = ["${aws_security_group.phoenix-internal-sg.id}"]
   subnet_id               = "${module.vpc.central_subnet_id}"
-  private_ip              = "10.0.10.100"
+  private_ip              = "10.0.10.50"
 
   tags {
     Name                  = "Central DNS 01"

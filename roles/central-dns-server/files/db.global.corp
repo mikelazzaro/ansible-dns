@@ -13,7 +13,7 @@ $TTL    5m
 
 ;
 @       IN      NS      central-dns01.global.corp.
-@       IN      A       10.0.10.100
+@       IN      A       10.0.10.50
 @       IN      AAAA    ::1
 
 
@@ -21,34 +21,35 @@ $TTL    5m
 
 api.global.corp.                    IN      CNAME   api.corp.
 db.global.corp.                     IN      CNAME   db.corp.
+media.global.corp.                  IN      CNAME   media.corp.
 
-central-dns01.global.corp.          IN      A       10.0.10.100
+central-dns01.global.corp.          IN      A       10.0.10.50
 
-alpha-api.global.corp.              IN      A       10.0.20.25
-alpha-dns01.global.corp.            IN      A       10.0.20.100
-alpha-dns02.global.corp.            IN      A       10.0.20.101
+alpha-api.global.corp.              IN      A       10.0.20.20
+alpha-dns01.global.corp.            IN      A       10.0.20.50
+alpha-dns02.global.corp.            IN      A       10.0.20.51
 
-alpha-api-testing.global.corp.      IN      A       10.0.20.125
-alpha-dns01-testing.global.corp.    IN      A       10.0.20.200
+alpha-api-testing.global.corp.      IN      A       10.0.20.120
+alpha-dns01-testing.global.corp.    IN      A       10.0.20.150
 
-beta-api.global.corp.               IN      A       10.0.30.25
-beta-dns01.global.corp.             IN      A       10.0.30.100
-beta-dns02.global.corp.             IN      A       10.0.30.101
+beta-api.global.corp.               IN      A       10.0.30.20
+beta-dns01.global.corp.             IN      A       10.0.30.50
+beta-dns02.global.corp.             IN      A       10.0.30.51
 
-beta-api-testing.global.corp.       IN      A       10.0.30.125
-beta-dns01-testing.global.corp.     IN      A       10.0.30.200
+beta-api-testing.global.corp.       IN      A       10.0.30.120
+beta-dns01-testing.global.corp.     IN      A       10.0.30.150
 
-gamma-api.global.corp.              IN      A       10.0.40.25
-gamma-dns01.global.corp.            IN      A       10.0.40.100
-gamma-dns02.global.corp.            IN      A       10.0.40.101
+gamma-api.global.corp.              IN      A       10.0.40.20
+gamma-dns01.global.corp.            IN      A       10.0.40.50
+gamma-dns02.global.corp.            IN      A       10.0.40.51
 
-gamma-api-testing.global.corp.      IN      A       10.0.40.125
-gamma-dns01-testing.global.corp.    IN      A       10.0.40.200
+gamma-api-testing.global.corp.      IN      A       10.0.40.120
+gamma-dns01-testing.global.corp.    IN      A       10.0.40.150
 
-delta-api.global.corp.              IN      A       10.0.50.25
-delta-dns01.global.corp.            IN      A       10.0.50.100
-delta-dns02.global.corp.            IN      A       10.0.50.101
+delta-api.global.corp.              IN      A       10.0.50.20
+delta-dns01.global.corp.            IN      A       10.0.50.50
+delta-dns02.global.corp.            IN      A       10.0.50.51
 
-delta-api-testing.global.corp.      IN      A       10.0.50.125
-delta-dns01-testing.global.corp.    IN      A       10.0.50.200
+delta-api-testing.global.corp.      IN      A       10.0.50.120
+delta-dns01-testing.global.corp.    IN      A       10.0.50.150
 
