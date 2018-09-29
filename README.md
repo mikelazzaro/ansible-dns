@@ -71,68 +71,11 @@ cd ansible-dns
 
 Finally, log out and back in to the bastion host to ensure that you're using the updated settings.  
 
-#### Template Setup 
-
-While not strictly required in AWS, this is necessary in our current on-prem environment, where we're starting 
-from the Ubuntu 16.04 installation media. After the basic installation process and networking setup is complete,
-a minimal set of manual steps are needed to allow Ansible to take over. This includes:
-- Setting up an `ansible` user account
-- Granting `ansible` passwordless sudo privileges
-- Allowing login as `ansible` using the `ansible.pem` key 
-
-Provision a new Ubuntu 16.04 instance as the starting point for the template by running the provisioning script:
-```bash
-./provision_template.sh
-```
-
-It may take a minute or two after the script finishes for the instance to finish initializing. 
-
-Log into the template server, using the pre-configured setup from the SSH config file:
-```bash
-ssh template
-``` 
-
-First, create the new ansible user:
-```bash
-sudo adduser --system --shell /bin/bash --group --gecos 'Ansible automation user' --disabled-password ansible
-``` 
-
-Next, open visudo to update the `ansible` user's sudo rights:
-```bash
-sudo EDITOR=vim visudo -f /etc/sudoers.d/50-ansible
-```
-
-Add the following line, then save and close:
-```
-ansible ALL=(ALL) NOPASSWD:ALL
-```
-
-Lastly, switch over to the `ansible` user, create a `.ssh` folder, and paste the contents of ansible.pub 
-into `~/.ssh/authorized_keys`:
-```
-ubuntu@ip-10-0-0-99:~$ sudo su - ansible
-ansible@ip-10-0-0-99:~$ mkdir .ssh
-ansible@ip-10-0-0-99:~$ vi ~/.ssh/authorized_keys
-``` 
-
-Disconnect from the template, and confirm that things are working by logging in again using the 
-Ansible credentials:
-```bash
-ssh template-ansible
-```
-
-Create an AMI from the template, and make a note of the ID, since you'll need it for the next section. 
-
-Finally, terminate the template server:
-```bash
-./terminate_template.sh
-```
-
 #### Provisioning & Configuration of DNS servers
  
-Finally, you're ready to set up the DNS servers!
+Now you're ready to set up the new DNS servers!
  
-Run the `provision_dns.sh` script to provision primary and secondary DNS servers for each remote environment:
+Run the `provision_dns.sh` script to provision primary and secondary DNS servers for each location:
 ```bash
 ./provision_dns.sh
 ```
