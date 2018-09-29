@@ -18,7 +18,7 @@
 
 - name: Ensure SSH key permissions are correct
   file:
-    path: "/home/ubuntu/.ssh/{{ ssh_keyname }}.pem"
+    path: "/home/ubuntu/.ssh/{{ ssh_key_name }}.pem"
     state: file
     owner: ubuntu
     group: ubuntu
