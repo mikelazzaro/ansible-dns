@@ -75,9 +75,11 @@
     name: bind9
     state: restarted
 
-- name: Pause to allow server to pull zone file from central DNS server
-  pause:
-    seconds: 30
+- name: Force immediate update of zones from master
+  command: "rndc reload {{ item }}"
+  with_items:
+    - "global.corp"
+  when: not is_isolated
 
 # Needed for on-prem Ubuntu-based templates, but
 #   may not needed for AWS
