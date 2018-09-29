@@ -2,3 +2,10 @@
 
 - name: Set hostname temporarily
   shell: "hostname {{ hostname }}"
+  listen: "Temporary hostname setup"
+
+- name: Restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted
+  listen: "Temporary hostname setup"

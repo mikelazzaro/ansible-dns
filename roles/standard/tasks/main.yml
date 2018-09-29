@@ -11,14 +11,14 @@
     owner: root
     group: root
     mode: 0644
-  notify: "Set hostname temporarily"
+  notify: "Temporary hostname setup"
 
 - name: Update hosts file
   lineinfile:
     path: /etc/hosts
     regexp: "^127.0.0.1"
     line: "127.0.0.1 {{ hostname }} {{ hostname }}.global.corp.domain localhost"
-  notify: "Set hostname temporarily"
+  notify: "Temporary hostname setup"
 
 - name: Ensure any pending handlers are run now
   meta: flush_handlers
