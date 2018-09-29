@@ -1,0 +1,8 @@
+- name: Perform nslookup for domain
+  command: "nslookup {{ item.domain }} localhost"
+  register: nslookup_result
+
+- name: Fail if results don't match
+  fail:
+    msg: "Query for {{ item.domain }} returned '{{ nslookup_result.stdout_lines[-1] }}' instead of expected '{{ item.address }}'"
+  when: item.address not in nslookup_result.stdout_lines[-1]

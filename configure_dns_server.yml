@@ -15,5 +15,5 @@
     - user-friendly
     - motd-warning
     - no-apparmor
-    - dns-server
-#    - dns-server-tests
+    - { role: dns-server, tags: ['core'] }
+    - { role: dns-server-tests, tags: ['core', 'test'] }
