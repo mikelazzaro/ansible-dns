@@ -51,6 +51,14 @@
     dest: "/etc/ansible/hosts"
     mode: "755"
 
+- name: Deploy Ansible config file
+  template:
+    src: ansible.cfg.j2
+    dest: "/etc/ansible/ansible.cfg"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+
 - name: Modify resolv.conf generation process to include central DNS server
   template:
     src: "resolvconf_head"
