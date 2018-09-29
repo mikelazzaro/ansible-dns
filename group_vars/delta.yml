@@ -3,5 +3,5 @@
 # Location-specific settings
 api_server_ip:            "10.0.50.20"
 api_server_hostname:      "delta-api.global.corp"
-aws_subnet_id:            "{{ delta_subnet_id }}"
+#aws_subnet_id:            "{{ delta_subnet_id }}"
 aws_subnet_name:          "Delta Subnet"
