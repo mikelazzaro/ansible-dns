@@ -146,8 +146,9 @@ resource "aws_instance" "bastion" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get update",
-      "sudo apt-get install python-pip -y",
-      "pip install ansible",
+//      "sudo apt-get install python-pip -y",
+//      "pip install ansible",
+      "pip3 install ansible"
       "git clone https://github.com/mikelazzaro/ansible-dns.git",
       "mkdir -p /home/ubuntu/.ssh"
     ]
