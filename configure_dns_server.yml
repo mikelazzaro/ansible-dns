@@ -1,10 +1,10 @@
 ---
-- name: Ensure DNS servers have Ansible prereqs (Python 2)
-  hosts: dns_servers
-  become: yes
-  gather_facts: no
-  roles:
-    - ansible-requirements
+#- name: Ensure DNS servers have Ansible prereqs (Python 2)
+#  hosts: dns_servers
+#  become: yes
+#  gather_facts: no
+#  roles:
+#    - ansible-requirements
 
 - name: Configure DNS servers
   hosts: dns_servers
