@@ -1,0 +1,4 @@
+---
+
+- name: Rebuild resolvconf
+  command: resolvconf -u
