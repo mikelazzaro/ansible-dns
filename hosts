@@ -5,17 +5,29 @@ central-dns01               ansible_host=10.0.10.50
 alpha-dns01                 ansible_host=10.0.20.50
 alpha-dns02                 ansible_host=10.0.20.51
 
+[alpha-testing]
+alpha-dns01-testing         ansible_host=10.0.20.150
+
 [beta]
 beta-dns01                  ansible_host=10.0.30.50
 beta-dns02                  ansible_host=10.0.30.51
+
+[beta-testing]
+beta-dns01-testing          ansible_host=10.0.30.150
 
 [gamma]
 gamma-dns01                 ansible_host=10.0.40.50
 gamma-dns02                 ansible_host=10.0.40.51
 
+[gamma-testing]
+gamma-dns01-testing         ansible_host=10.0.40.150
+
 [delta]
 delta-dns01                 ansible_host=10.0.50.50
 delta-dns02                 ansible_host=10.0.50.51
+
+[gamma-testing]
+delta-dns01-testing         ansible_host=10.0.50.150
 
 
 [primary]
@@ -30,6 +42,13 @@ beta-dns02
 gamma-dns02
 delta-dns02
 
+[testing]
+alpha-dns01-testing
+beta-dns01-testing
+gamma-dns01-testing
+delta-dns01-testing
+
 [dns_servers:children]
 primary
 secondary
+testing
