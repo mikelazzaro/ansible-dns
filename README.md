@@ -25,22 +25,18 @@ As of 09/2018, NAT Gateway pricing runs $0.045/hr (~$33/mo), plus data processin
 
 ### SSH Keypairs
 
-You'll need to manually set up 2 AWS key pairs in the **US-east-2** region (where all components will run), 
-with the following names:
-
-- human - used to manually interact with servers
-- ansible - used by ansible for all automated access 
-
-Next, generate a public key for the "ansible" keypair.
+You'll need to manually set up an AWS key pair in the **US-east-2** region (Ohio), where all servers will be created, 
+with the name "phoenix". Create & download the private key, then generate the public key for it.   
 
 On OSX or Linux:
 
 ```bash
-ssh-keygen -f ansible.pem -y > ansible.pub
+ssh-keygen -f phoenix.pem -y > phoenix.pub
 ``` 
 
-_Note: If your SSH keys are located somewhere other than `~/.ssh/`, you'll need to specify their location in the 
-Terraform vars file, `terraform/terraform.tfvars`._
+_Note: if you want to use a different SSH key name, or if your SSH keys are located somewhere other than `~/.ssh/`, 
+you'll need to specify the correct values in the Terraform vars file, `terraform/terraform.tfvars` and 
+the `group_vars/all` file._
 
 ### Environment Setup
 
@@ -50,7 +46,7 @@ cd terraform
 terraform apply
 ```
 
-When Terraform finished, pull the IP address of the bastion host from the output:
+Once Terraform finishes, pull the IP address of the bastion host from the output:
 ```
 Outputs:
 
@@ -177,7 +173,8 @@ To clean up and remove all the resources used by the demo:
     ```bash
     ./terminate_dns.sh
     ```
-- Deregister the template AMI via the AWS console 
+- Deregister the template AMI via the EC2 console
+- Delete any remaining snapshots in the EC2 console 
 - From your local environment, use terraform to destroy the infrastructure
     ```bash
     terraform destroy

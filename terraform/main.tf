@@ -4,6 +4,7 @@
 ##############################################
 
 variable "local_ssh_folder" {}
+variable "ssh_keyname" {}
 
 
 #
@@ -128,7 +129,7 @@ resource "aws_iam_role_policy" "basion_role_policy" {
 resource "aws_instance" "bastion" {
   ami           = "${data.aws_ami.ubuntu_1604.id}"
   instance_type = "t2.micro"
-  key_name = "human"
+  key_name = "${var.ssh_keyname}"
   vpc_security_group_ids  = ["${aws_security_group.phoenix-bastion-sg.id}"]
 
   # Don't need to specify VPC, since subnet will take care of that
@@ -154,29 +155,18 @@ resource "aws_instance" "bastion" {
     connection {
       type = "ssh"
       user = "ubuntu"
-      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
+      private_key = "${file("${var.local_ssh_folder}/${var.ssh_keyname}.pem")}"
     }
   }
 
   provisioner "file" {
-    source = "${var.local_ssh_folder}/human.pem"
-    destination = "/home/ubuntu/.ssh/human.pem"
+    source = "${var.local_ssh_folder}/${var.ssh_keyname}.pem"
+    destination = "/home/ubuntu/.ssh/${var.ssh_keyname}.pem"
 
     connection {
       type = "ssh"
       user = "ubuntu"
-      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
-    }
-  }
-
-  provisioner "file" {
-    source = "${var.local_ssh_folder}/ansible.pem"
-    destination = "/home/ubuntu/.ssh/ansible.pem"
-
-    connection {
-      type = "ssh"
-      user = "ubuntu"
-      private_key = "${file("${var.local_ssh_folder}/human.pem")}"
+      private_key = "${file("${var.local_ssh_folder}/${var.ssh_keyname}.pem")}"
     }
   }
 }
@@ -243,7 +233,7 @@ resource "aws_instance" "central-dns01" {
 
   ami                     = "${data.aws_ami.ubuntu_1604.id}"
   instance_type           = "t2.micro"
-  key_name                = "ansible"
+  key_name                = "${var.ssh_keyname}"
   vpc_security_group_ids  = ["${aws_security_group.phoenix-internal-sg.id}"]
   subnet_id               = "${module.vpc.central_subnet_id}"
   private_ip              = "10.0.10.50"
