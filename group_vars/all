@@ -1,5 +1,5 @@
-ansible_private_key_file:         "~/.ssh/ansible.pem"
-ansible_user:                     "ansible"
+ansible_private_key_file:         "~/.ssh/phoenix.pem"
+ansible_user:                     "ubuntu"
 
 aws_region:                       "us-east-2"
 
