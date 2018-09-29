@@ -36,3 +36,6 @@ internal_sg:                      "phoenix_internal_sg"
 provision_use_latest_ami:         yes
 provision_latest_ami_pattern:     "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
 provision_latest_ami_owner:       "099720109477"
+
+# Control var for enabling testing server functionality
+is_isolated:                      no
