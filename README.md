@@ -123,30 +123,3 @@ To clean up and remove all the resources used by the demo:
     ```bash
     terraform destroy
     ```
-
-Alternate Branches
-----------------------
-
-This repo includes several branches that include different versions of the DNS server configuration playbooks.
-
-- **master** - basic version of scripts
-- **extras** - includes expanded testing, and various other added features
-- **test-servers** - includes support for testing environments
-- **complete** - everything from **extras** and **test-servers**
-
-### Using an alternate branch
-
-All aspects of the demo other than the local DNS server configuration (such as the networking, or the bastion host 
-setup) are identical across all branches.
-
-To use the scripts from an alternate branch, simply terminate the existing DNS servers, check out the new branch, 
-and re-run the provisioning and configuration steps:
-
-```bash
-./terminate_dns.sh
-git checkout extras
-./provision_dns.sh
-ansible-playbook -i hosts configure_dns_servers.yml
-```
-
-
