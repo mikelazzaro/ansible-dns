@@ -1,7 +1,7 @@
 ---
 
 - name: Set hostname temporarily
-  shell: "hostname {{ hostname }}"
+  shell: "hostname {{ inventory_hostname }}"
   listen: "Temporary hostname setup"
 
 - name: Restart rsyslog
