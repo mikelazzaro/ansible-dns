@@ -23,7 +23,7 @@ To run the demo, you'll need the following things:
 _**NOTE**: The networking setup includes a managed NAT Gateway, which is not eligible for the AWS Free Tier. 
 As of 09/2018, NAT Gateway pricing runs $0.045/hr (~$33/mo), plus data processing & transfer costs._
 
-### SSH Keypairs
+### SSH Keypair
 
 You'll need to manually set up an AWS key pair in the **US-east-2** region (Ohio), where all servers will be created, 
 with the name "phoenix". Create & download the private key, then generate the public key for it.   
