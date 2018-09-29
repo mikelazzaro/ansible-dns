@@ -15,6 +15,7 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     mode: "0644"
+    force: yes
 
 - name: Ensure SSH key permissions are correct
   file:
