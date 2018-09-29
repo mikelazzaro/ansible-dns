@@ -7,64 +7,64 @@ Host    *
 Host central-dns01
     HostName={{ hostvars['central-dns01']['ansible_host'] }}
     User=ubuntu
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host alpha-dns01
     HostName={{ hostvars['alpha-dns01']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host alpha-dns02
     HostName={{ hostvars['alpha-dns02']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host alpha-dns01-testing
     HostName={{ hostvars['alpha-dns01-testing']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host beta-dns01
     HostName={{ hostvars['beta-dns01']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host beta-dns02
     HostName={{ hostvars['beta-dns02']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host beta-dns01-testing
     HostName={{ hostvars['beta-dns01-testing']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host gamma-dns01
     HostName={{ hostvars['gamma-dns01']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host gamma-dns02
     HostName={{ hostvars['gamma-dns02']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host gamma-dns01-testing
     HostName={{ hostvars['gamma-dns01-testing']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host delta-dns01
     HostName={{ hostvars['delta-dns01']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host delta-dns02
     HostName={{ hostvars['delta-dns02']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
 
 Host delta-dns01-testing
     HostName={{ hostvars['delta-dns01-testing']['ansible_host'] }}
     User=ansible
-    IdentityFile=~/.ssh/ansible.pem
+    IdentityFile=~/.ssh/{{ ssh_key_name }}.pem
