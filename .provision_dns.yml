@@ -1,14 +1,11 @@
 ---
 
-- name: Provision template server
+- name: Provision DNS servers
   hosts: dns_servers
   connection: local
   become: no
   gather_facts: no
   vars:
     private_ip_address: "{{ ansible_host }}"
-  vars_prompt:
-    - name: "aws_ami"
-      prompt: "ID of template AMI?"
   roles:
     - provision-host
