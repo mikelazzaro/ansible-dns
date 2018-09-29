@@ -1,7 +1,7 @@
 ---
 
 aws_security_group_name:          "{{ internal_sg }}"
-aws_ssh_key:                      "ansible"
+aws_ssh_key:                      "{{ ssh_key_name }}"
 aws_instance_type:                "t2.micro"
 
 named_log_folder:                 "/var/log/named"
