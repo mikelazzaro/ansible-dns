@@ -37,7 +37,7 @@ ssh-keygen -f phoenix.pem -y > phoenix.pub
 **Note:** if you want to use a different SSH key name, or if your SSH keys are located somewhere other than `~/.ssh/`, 
 you'll need to specify the correct values in:
 - the Terraform vars file: `terraform/terraform.tfvars` 
-- the "ansible_private_key_file" variable in `group_vars/all`
+- the `ssh_key_folder` and `ssh_key_name` variables in `group_vars/all`
 
 ### Environment Setup
 

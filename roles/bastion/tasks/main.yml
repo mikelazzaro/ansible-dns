@@ -18,21 +18,11 @@
 
 - name: Ensure SSH key permissions are correct
   file:
-    path: "/home/ubuntu/.ssh/{{ item }}"
-    state: touch
+    path: "/home/ubuntu/.ssh/{{ ssh_keyname }}.pem"
+    state: file
     owner: ubuntu
     group: ubuntu
     mode: "0400"
-  with_items:
-    - ansible.pem
-    - human.pem
-  register: ssh_keys
-  ignore_errors: true
-
-- name: Fail helpfully if problem with SSH keys
-  fail:
-    msg: "Problem with SSH key files. Did you copy over the required keys to the bastion host?"
-  when: ssh_keys is failed
 
 - name: Install various AWS dependencies
   apt:
