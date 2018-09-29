@@ -54,12 +54,12 @@ Outputs:
 bastion_ip = 18.188.137.189
 ```
 
-You'll use this IP address, along with username `ubuntu` and the `human.pem` key to access the bastion host, e.g.: 
+Use this IP address, along with username `ubuntu` and the SSH key to access the bastion host, e.g.: 
 ```
 Host bastion
     HostName=18.188.137.189
     User=ubuntu
-    IdentityFile=~/.ssh/human.pem
+    IdentityFile=~/.ssh/phoenix.pem
 ```
 
 Log into the bastion host, go into the `ansible-dns` folder, and run `bootstrap.sh` to complete the setup of the 
