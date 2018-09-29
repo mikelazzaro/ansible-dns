@@ -4,6 +4,7 @@
 - name: Update all packages to latest
   apt:
     upgrade: dist
+    update_cache: yes
 
 - name: Remove any outdated packages
   apt:
@@ -28,6 +29,7 @@
   apt:
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
   - bind9
   - bind9utils
