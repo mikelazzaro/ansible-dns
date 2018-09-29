@@ -21,10 +21,10 @@ $TTL    5m
                          )
 
 @       IN      NS      {{ inventory_hostname }}.corp.
-@       IN      A       {{ inventory_hostname }}
+@       IN      A       {{ ansible_host }}
 @       IN      AAAA    ::1
 
-{{ inventory_hostname }}.corp. IN  A   {{ inventory_hostname }}
+{{ inventory_hostname }}.corp. IN  A   {{ ansible_host }}
 
 api.corp.                       IN  A   {{ api_server_ip }}
 media.corp.                     IN  A   {{ api_server_ip }}
