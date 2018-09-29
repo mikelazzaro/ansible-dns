@@ -1,7 +1,7 @@
 ---
 
 - name: Finish configuration of bastion server
-  hosts: localhost
+  hosts: phoenix-demo
   connection: local
   become: yes
   gather_facts: yes

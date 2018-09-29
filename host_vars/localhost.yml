@@ -1,3 +1,0 @@
-hostname:     "ansible-demo"
-ansible_user: "ubuntu"
-ssh_config_folder:  "/home/{{ ansible_user }}/.ssh"
