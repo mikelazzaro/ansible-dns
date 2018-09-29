@@ -17,7 +17,7 @@
   lineinfile:
     path: /etc/hosts
     regexp: "^127.0.0.1"
-    line: "127.0.0.1 {{ hostname }} {{ hostname }}.global.corp.domain localhost"
+    line: "127.0.0.1 {{ inventory_hostname }} {{ inventory_hostname }}.global.corp.domain localhost"
   notify: "Temporary hostname setup"
 
 - name: Ensure any pending handlers are run now
