@@ -41,6 +41,8 @@
   with_items:
     - boto
     - boto3
+  tags:
+    - skip_ansible_lint
 
 - name: Make sure ansible config folder exists
   file:
@@ -67,6 +69,8 @@
     state: latest
   with_items:
     - ansible-lint
+  tags:
+    - skip_ansible_lint
 
 - name: Modify resolv.conf generation process to include central DNS server
   template:
