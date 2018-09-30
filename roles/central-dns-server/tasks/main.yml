@@ -42,6 +42,7 @@
   with_items:
     - "corp"
     - "global.corp"
+  when_changed: false
 
 - name: Restart bind
   service:
@@ -50,6 +51,8 @@
 
 - name: Basic check of local domain
   command: "nslookup api.corp 127.0.0.1"
+  when_changed: false
 
 - name: Basic check of global domain
   command: "nslookup api.global.corp 127.0.0.1"
+  when_changed: false
