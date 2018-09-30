@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ansible-lint ./*.yml
+ansible-lint ./*.yml ./.*.yml
