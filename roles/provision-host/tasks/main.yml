@@ -23,7 +23,8 @@
 
 - name: Get most recent AMI
   set_fact:
-    latest_ami: {{ ami_list.images | sort(attribute='creation_date') | last }}
+    latest_ami: >
+      {{ ami_list.images | sort(attribute='creation_date') | last }}
 
 #- name: Get latest AMI
 #  ec2_ami_find:
