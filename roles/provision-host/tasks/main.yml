@@ -63,7 +63,7 @@
   local_action: ec2
   args:
     instance_type: "{{ aws_instance_type }}"
-    image: "{{ aws_ami }}"
+    image: "{{ aws_ami }}.image_id"
     region: "{{ aws_region }}"
     vpc_subnet_id: "{{ subnet_id }}"
     group: "{{ aws_security_group_name }}"
