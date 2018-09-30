@@ -27,6 +27,18 @@
   debug:
     var: aws_ami
 
+- name: Check aws_ami.architecture variable
+  debug:
+    var: aws_ami.architecture
+
+- name: Check aws_ami.image_id variable
+  debug:
+    var: aws_ami.image_id
+
+- name: Check aws_ami.hypervisor variable
+  debug:
+    var: aws_ami.hypervisor
+
 - name: Extract ID from AMI data
   set_fact:
     aws_ami_id: aws_ami["image_id"]
