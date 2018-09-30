@@ -7,15 +7,26 @@
 //                                                                                  //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
-zone "corp" {
+zone "corp" IN {
     type    master;
     file    "{{ dns_config_folder }}/db.corp";
 };
 
-zone "global.corp" {
+{% if not is_isolated %}
+
+zone "global.corp" IN {
     type slave;
     file "{{ named_slave_folder }}/db.global.corp";
     masters {
         {{ central_dns_ip }};
     };
 };
+
+{% else %}
+
+zone "global.corp"  IN {
+    type    master;
+    file    "{{ dns_config_folder }}/db.global.corp";
+};
+
+{% endif %}

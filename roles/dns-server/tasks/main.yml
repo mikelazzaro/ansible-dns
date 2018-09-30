@@ -39,16 +39,22 @@
   tags:
     - skip_ansible_list
 
-- name: Make sure various folders exist
+- name: Make sure log folder exists
   file:
-    path: "{{ item }}"
+    path: "{{ named_log_folder }}"
     state: directory
     owner: bind
     group: bind
-    mode: "755"
-  with_items:
-    - "{{ named_log_folder }}"
-    - "{{ named_slave_folder }}"
+    mode: "0755"
+
+- name: Make sure slave zone folder exists
+  file:
+    path: "{{ named_slave_folder  }}"
+    state: directory
+    owner: bind
+    group: bind
+    mode: "0755"
+  when: not is_isolated
 
 - name: Deploy bind config files
   template:
@@ -73,6 +79,20 @@
 
 - name: Check local zone file
   command: "named-checkzone corp {{ dns_config_folder }}/db.corp"
+
+- name: Deploy hard-coded zone files (isolated only)
+  template:
+    src: "db.{{ item }}.j2"
+    dest: "{{ dns_config_folder }}/db.{{ item }}"
+  with_items:
+    - local.corp
+  when: not is_isolated
+
+- name: Check hard-coded zone files (isolated only)
+  command: "named-checkzone {{ item }} {{ dns_config_folder }}/db.{{ item }}"
+  with_items:
+    - local.corp
+  when: not is_isolated
 
 - name: Restart bind
   service:
