@@ -25,10 +25,6 @@ $TTL    5m
 @       IN      AAAA    ::1
 
 
-;api.global.corp.                            IN  A   {{ api_server_ip }}
-;db.global.corp.                             IN  A   {{ api_server_ip }}
-;media.global.corp.                          IN  A   {{ api_server_ip }}
-
 ; Handle self
 
 {{ inventory_hostname }}.global.corp.       IN  A   {{ ansible_host }}
@@ -44,6 +40,10 @@ $TTL    5m
 {{ dns_nontest_primary_hostname }}.         IN  CNAME   {{ inventory_hostname }}.global.corp
 {{ dns_nontest_secondary_hostname }}.       IN  CNAME   {{ inventory_hostname }}.global.corp
 {{ docker_server_nontest_hostname }}.       IN  CNAME   {{ docker_server_hostname }}.global.corp
+
+api.global.corp.                            IN  A   {{ api_server_ip }}
+db.global.corp.                             IN  A   {{ api_server_ip }}
+media.global.corp.                          IN  A   {{ api_server_ip }}
 
 
 ; Assorted central servers that still need to be accessible
