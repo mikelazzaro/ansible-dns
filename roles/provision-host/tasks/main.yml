@@ -41,7 +41,7 @@
 
 - name: Extract ID from AMI data
   set_fact:
-    aws_ami_id: {{ aws_ami.image_id }}
+    aws_ami_id: "{{ aws_ami.image_id }}"
 
 - name: Check aws_ami_id variable
   debug:
