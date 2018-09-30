@@ -27,6 +27,10 @@
     aws_ami: >
       {{ ami_list.images | sort(attribute='creation_date') | last }}
 
+- name: Show aws_ami variable
+  debug:
+    var: aws_ami
+
 #- name: Get latest AMI
 #  ec2_ami_find:
 #    region: "{{ aws_region }}"
