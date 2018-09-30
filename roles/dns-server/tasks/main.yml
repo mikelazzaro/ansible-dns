@@ -120,7 +120,9 @@
 
 - name: Basic test of one local domain
   command: nslookup api.corp 127.0.0.1
+  changed_when: false
 
 - name: Basic test of one global domain
   command: nslookup api.global.corp 127.0.0.1
+  changed_when: false
 
