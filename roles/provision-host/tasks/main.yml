@@ -42,7 +42,7 @@
 #    aws_ami: "{{ ami_list.results[0].ami_id }}"
 #  when: provision_use_latest_ami
 
-- name: Get subnet ID
+- name: Get subnet info by name
   local_action: ec2_vpc_subnet_facts
   args:
     region: "{{ aws_region }}"
@@ -50,7 +50,8 @@
       "tag:Name": "{{ aws_subnet_name }}"
   register: subnet_facts
 
-- set_fact:
+- name: Register subnet ID
+  set_fact:
     subnet_id: "{{ subnet_facts.subnets[0].id }}"
 
 - name: Ensure host exists
