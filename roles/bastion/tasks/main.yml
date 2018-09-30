@@ -32,7 +32,7 @@
   with_items:
     - awscli
   tags:
-    - skip_ansible_list
+    - skip_ansible_lint
 
 - name: Install various AWS dependencies
   pip:

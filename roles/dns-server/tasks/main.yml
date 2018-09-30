@@ -6,7 +6,7 @@
     upgrade: dist
     update_cache: yes
   tags:
-    - skip_ansible_list
+    - skip_ansible_lint
 
 - name: Remove any outdated packages
   apt:
@@ -37,7 +37,7 @@
   - bind9utils
   - bind9-doc
   tags:
-    - skip_ansible_list
+    - skip_ansible_lint
 
 - name: Make sure log folder exists
   file:
