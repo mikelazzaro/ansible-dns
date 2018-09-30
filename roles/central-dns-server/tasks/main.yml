@@ -36,14 +36,14 @@
 
 - name: Check bind config
   command: "named-checkconf /etc/bind/named.conf"
-  when_changed: false
+  changed_when: false
 
 - name: Check bind config
   command: "named-checkzone {{ item }} /etc/bind/db.{{ item }}"
   with_items:
     - "corp"
     - "global.corp"
-  when_changed: false
+  changed_when: false
 
 - name: Restart bind
   service:
@@ -52,8 +52,8 @@
 
 - name: Basic check of local domain
   command: "nslookup api.corp 127.0.0.1"
-  when_changed: false
+  changed_when: false
 
 - name: Basic check of global domain
   command: "nslookup api.global.corp 127.0.0.1"
-  when_changed: false
+  changed_when: false
