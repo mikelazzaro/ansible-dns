@@ -1,14 +1,5 @@
 ---
 
-# TODO: Figure out how to get the same sort behavior via ec2_ami_facts
-#- name: Get latest AMI
-#  ec2_ami_facts:
-#    owner: "{{ provision_latest_ami_owner }}"
-#    filters:
-#      name: "{{ provision_latest_ami_pattern }}"
-#  when: provision_use_latest_ami
-#  register: ami_list
-
 - name: Get list of matching AMIs
   ec2_ami_facts:
     region: "{{ aws_region }}"
@@ -22,46 +13,6 @@
   set_fact:
     aws_ami: >
       {{ ami_list.images | sort(attribute='creation_date') | last }}
-
-- name: Check aws_ami variable
-  debug:
-    var: aws_ami
-
-- name: Check aws_ami.architecture variable
-  debug:
-    var: aws_ami.architecture
-
-- name: Check aws_ami.image_id variable
-  debug:
-    var: aws_ami.image_id
-
-- name: Check aws_ami.hypervisor variable
-  debug:
-    var: aws_ami.hypervisor
-
-- name: Extract ID from AMI data
-  set_fact:
-    aws_ami_id: "{{ aws_ami.image_id }}"
-
-- name: Check aws_ami_id variable
-  debug:
-    var: aws_ami_id
-
-#- name: Get latest AMI
-#  ec2_ami_find:
-#    region: "{{ aws_region }}"
-#    name: "{{ provision_latest_ami_pattern }}"
-#    owner: "{{ provision_latest_ami_owner }}"
-#    sort: name
-#    sort_order: descending
-#    sort_end: 1
-#  when: provision_use_latest_ami
-#  register: ami_list
-#
-#- name: Set aws_ami based on lookup
-#  set_fact:
-#    aws_ami: "{{ ami_list.results[0].ami_id }}"
-#  when: provision_use_latest_ami
 
 - name: Get subnet info by name
   local_action: ec2_vpc_subnet_facts
