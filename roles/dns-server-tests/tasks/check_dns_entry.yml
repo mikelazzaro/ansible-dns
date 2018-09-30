@@ -1,6 +1,7 @@
 - name: Perform nslookup for domain
   command: "nslookup {{ item.domain }} localhost"
   register: nslookup_result
+  changed_when: false
 
 - name: Fail if results don't match
   fail:

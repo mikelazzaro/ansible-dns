@@ -3,6 +3,7 @@
 # Checks to see if DNS server can resolve various domains from a local session
 - name: Basic resolution testing - internal
   command: "nslookup {{ item }} localhost"
+  changed_when: false
   with_items:
     # Local domains
     - "api.corp."
@@ -19,6 +20,7 @@
 # Checks to see if DNS server can resolve various domains from an outside host
 - name: Basic resolution testing - external
   command: "nslookup {{ item }} {{ ansible_host }}"
+  changed_when: false
   with_items:
     # Local domains
     - "api.corp."
