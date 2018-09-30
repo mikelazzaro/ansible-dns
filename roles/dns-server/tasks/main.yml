@@ -71,6 +71,7 @@
 
 - name: Check config file
   command: "named-checkconf {{ dns_config_folder }}/named.conf"
+  changed_when: false
 
 - name: Deploy zone files
   template:
@@ -79,6 +80,7 @@
 
 - name: Check local zone file
   command: "named-checkzone corp {{ dns_config_folder }}/db.corp"
+  changed_when: false
 
 - name: Deploy hard-coded zone files (isolated only)
   template:
@@ -92,6 +94,7 @@
   command: "named-checkzone {{ item }} {{ dns_config_folder }}/db.{{ item }}"
   with_items:
     - local.corp
+  changed_when: false
   when: not is_isolated
 
 - name: Restart bind
