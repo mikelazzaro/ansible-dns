@@ -36,6 +36,7 @@
 
 - name: Check bind config
   command: "named-checkconf /etc/bind/named.conf"
+  when_changed: false
 
 - name: Check bind config
   command: "named-checkzone {{ item }} /etc/bind/db.{{ item }}"
