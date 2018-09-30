@@ -14,7 +14,7 @@
     owner: "{{ provision_latest_ami_owner }}"
     filters:
       name: "{{ provision_latest_ami_pattern }}"
-  when: provisioning_use_latest_ami
+#  when: provisioning_use_latest_ami
   register: ami_list
 
 - name: Show ami_list data
