@@ -10,6 +10,8 @@
     - bind9utils
     - dnsutils
 #    - bind9-host
+  tags:
+    - skip_ansible_list
 
 - name: Modify resolv.conf generation process
   copy:

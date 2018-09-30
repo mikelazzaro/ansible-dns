@@ -5,6 +5,8 @@
   apt:
     upgrade: dist
     update_cache: yes
+  tags:
+    - skip_ansible_list
 
 - name: Remove any outdated packages
   apt:
@@ -34,6 +36,8 @@
   - bind9
   - bind9utils
   - bind9-doc
+  tags:
+    - skip_ansible_list
 
 - name: Make sure various folders exist
   file:

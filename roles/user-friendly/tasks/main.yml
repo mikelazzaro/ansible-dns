@@ -9,6 +9,8 @@
     - tree
     - nmap
     - ncdu
+  tags:
+    - skip_ansible_list
 
 - name: Add basic config files for Ansible user
   become: no

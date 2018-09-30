@@ -31,6 +31,8 @@
     update_cache: yes
   with_items:
     - awscli
+  tags:
+    - skip_ansible_list
 
 - name: Install various AWS dependencies
   pip:
