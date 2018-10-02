@@ -148,7 +148,7 @@ resource "aws_instance" "bastion" {
       "sudo apt-get update",
 //      "sudo apt-get install python-pip -y",
 //      "pip install ansible",
-      "sudo apt-get install python3-pip libffi-dev libssl-dev -y"
+      "sudo apt-get install python3-pip libffi-dev libssl-dev -y",
       "pip3 install ansible",
       "git clone https://github.com/mikelazzaro/ansible-dns.git",
       "mkdir -p /home/ubuntu/.ssh"
