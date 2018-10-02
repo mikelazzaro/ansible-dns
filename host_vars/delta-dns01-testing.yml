@@ -1,2 +1,5 @@
 aws_name_tag: "Delta DNS 01 - Testing"
 #hostname: "delta-dns01-testing"
+
+api_server_hostname:            "delta-api-testing.global.corp"
+api_server_nontest_hostname:    "delta-api.global.corp"

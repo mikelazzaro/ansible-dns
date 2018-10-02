@@ -1,2 +1,5 @@
 aws_name_tag: "Alpha DNS 01 - Testing"
 #hostname: "alpha-dns01-testing"
+
+api_server_hostname:            "alpha-api-testing.global.corp"
+api_server_nontest_hostname:    "alpha-api.global.corp"
