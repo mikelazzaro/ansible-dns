@@ -38,7 +38,8 @@
       "tag:Name": "{{ aws_subnet_name }}"
   register: subnet_facts
 
-- set_fact:
+- name: Set subnet_id fact
+  set_fact:
     subnet_id: "{{ subnet_facts.subnets[0].id }}"
 
 - name: Terminate any running instances
