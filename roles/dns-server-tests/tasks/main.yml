@@ -12,13 +12,33 @@
     # Global domains
     - "central-dns01.global.corp."
     - "{{ api_server_hostname }}."
-    - "alpha-dns01.global.corp."
     # External domains
     - "google.com."
     - "otgexp.com."
 
+- name: Basic resolution testing - internal (isolated)
+  command: "nslookup {{ item }} localhost"
+  changed_when: false
+  with_items:
+    # Local domains
+    - "{{ api_server_hostname }}"
+    - "{{ api_server_nontest_hostname }}"
+    - "{{ dns_nontest_primary_hostname }}"
+    - "{{ dns_nontest_secondary_hostname }}"
+  when: is_isolated
+
+- name: Basic resolution testing - internal (non-isolated)
+  command: "nslookup {{ item }} localhost"
+  changed_when: false
+  with_items:
+    - "alpha-dns01.global.corp"
+    - "beta-dns02.global.corp"
+    - "gamma-dns01-testing.global.corp"
+  when: not is_isolated
+
 # Checks to see if DNS server can resolve various domains from an outside host
 - name: Basic resolution testing - external
+#  delegate_to: localhost
   command: "nslookup {{ item }} {{ ansible_host }}"
   changed_when: false
   with_items:
@@ -27,9 +47,9 @@
     - "db.corp."
     - "media.corp."
     # Global domains
-    - "central-dns01.global.corp."
+#    - "central-dns01.global.corp."
     - "{{ api_server_hostname }}."
-    - "alpha-dns01.global.corp."
+#    - "alpha-dns01.global.corp."
     # External domains
     - "google.com."
     - "otgexp.com."
