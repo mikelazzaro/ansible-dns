@@ -87,13 +87,13 @@
     src: "db.{{ item }}.j2"
     dest: "{{ dns_config_folder }}/db.{{ item }}"
   with_items:
-    - local.corp
+    - corp
   when: is_isolated
 
 - name: Check hard-coded zone files (isolated only)
   command: "named-checkzone {{ item }} {{ dns_config_folder }}/db.{{ item }}"
   with_items:
-    - local.corp
+    - corp
   changed_when: false
   when: is_isolated
 
