@@ -88,12 +88,14 @@
     dest: "{{ dns_config_folder }}/db.{{ item }}"
   with_items:
     - corp
+    - global.corp
   when: is_isolated
 
 - name: Check hard-coded zone files (isolated only)
   command: "named-checkzone {{ item }} {{ dns_config_folder }}/db.{{ item }}"
   with_items:
     - corp
+    - global.corp
   changed_when: false
   when: is_isolated
 
