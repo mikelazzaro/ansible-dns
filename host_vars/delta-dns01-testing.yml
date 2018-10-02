@@ -3,3 +3,6 @@ aws_name_tag: "Delta DNS 01 - Testing"
 
 api_server_hostname:            "delta-api-testing.global.corp"
 api_server_nontest_hostname:    "delta-api.global.corp"
+
+dns_nontest_primary_hostname:   "delta-dns01.global.corp"
+dns_nontest_secondary_hostname: "delta-dns02.global.corp"

@@ -3,3 +3,7 @@ aws_name_tag: "Alpha DNS 01 - Testing"
 
 api_server_hostname:            "alpha-api-testing.global.corp"
 api_server_nontest_hostname:    "alpha-api.global.corp"
+
+dns_nontest_primary_hostname:   "alpha-dns01.global.corp"
+dns_nontest_secondary_hostname: "alpha-dns02.global.corp"
+

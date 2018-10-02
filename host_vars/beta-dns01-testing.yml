@@ -3,3 +3,6 @@ aws_name_tag: "Beta DNS 01 - Testing"
 
 api_server_hostname:            "beta-api-testing.global.corp"
 api_server_nontest_hostname:    "beta-api.global.corp"
+
+dns_nontest_primary_hostname:   "beta-dns01.global.corp"
+dns_nontest_secondary_hostname: "beta-dns02.global.corp"

@@ -3,3 +3,6 @@ aws_name_tag: "Gamma DNS 01 - Testing"
 
 api_server_hostname:            "gamma-api-testing.global.corp"
 api_server_nontest_hostname:    "gamma-api.global.corp"
+
+dns_nontest_primary_hostname:   "gamma-dns01.global.corp"
+dns_nontest_secondary_hostname: "gamma-dns02.global.corp"
