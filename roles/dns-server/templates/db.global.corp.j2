@@ -32,9 +32,9 @@ $TTL    5m
 
 ; Point all 'non-test' domains to 'test' domains
 
-{{ api_server_nontest_hostname  }}.         IN  CNAME   {{ api_server_hostname }}
-{{ dns_nontest_primary_hostname }}.         IN  CNAME   {{ inventory_hostname }}.global.corp
-{{ dns_nontest_secondary_hostname }}.       IN  CNAME   {{ inventory_hostname }}.global.corp
+{{ api_server_nontest_hostname  }}.         IN  CNAME   {{ api_server_hostname }}.
+{{ dns_nontest_primary_hostname }}.         IN  CNAME   {{ inventory_hostname }}.global.corp.
+{{ dns_nontest_secondary_hostname }}.       IN  CNAME   {{ inventory_hostname }}.global.corp.
 
 api.global.corp.                            IN  A   {{ api_server_ip }}
 db.global.corp.                             IN  A   {{ api_server_ip }}
