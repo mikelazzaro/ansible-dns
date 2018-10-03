@@ -34,11 +34,11 @@ log_channels:
 
 test_domains:
   # Fixed IP addresses
-  - { domain: "central-dns01.global.corp", address: "10.0.10.100" }
-  - { domain: "alpha-dns01.global.corp", address: "10.0.20.100" }
-  - { domain: "beta-dns02.global.corp", address: "10.0.30.101" }
-  - { domain: "gamma-api.global.corp", address: "10.0.40.25" }
-  - { domain: "delta-api.global.corp", address: "10.0.50.25" }
+  - { domain: "central-dns01.global.corp", address: "10.0.10.50" }
+  - { domain: "alpha-dns01.global.corp", address: "10.0.20.50" }
+  - { domain: "beta-dns02.global.corp", address: "10.0.30.51" }
+  - { domain: "gamma-api.global.corp", address: "10.0.40.20" }
+  - { domain: "delta-api.global.corp", address: "10.0.50.20" }
   # Non-fixed
   - { domain: "{{ central_dns_hostname }}", address: "{{ central_dns_ip }}" }
   - { domain: "{{ api_server_hostname }}", address: "{{ api_server_ip }}" }
