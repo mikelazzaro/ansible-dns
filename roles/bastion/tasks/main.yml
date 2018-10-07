@@ -26,11 +26,12 @@
 
 - name: Install various AWS dependencies
   apt:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
-  with_items:
-    - awscli
+  vars:
+    packages:
+      - awscli
   tags:
     - skip_ansible_lint
 
@@ -38,10 +39,11 @@
   pip:
     name: "{{ item }}"
     state: latest
-  with_items:
-    - boto
-    - boto3
-    - ansible-lint
+  vars:
+    packages:
+      - boto
+      - boto3
+      - ansible-lint
   tags:
     - skip_ansible_lint
 

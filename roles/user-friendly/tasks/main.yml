@@ -5,10 +5,11 @@
     name: "{{ item }}"
     state: latest
     update_cache: yes
-  with_items:
-    - tree
-    - nmap
-    - ncdu
+  vars:
+    packages:
+      - tree
+      - nmap
+      - ncdu
   tags:
     - skip_ansible_lint
 
