@@ -18,6 +18,7 @@
 #local_tmp      = ~/.ansible/tmp
 #plugin_filters_cfg = /etc/ansible/plugin_filters.yml
 #forks          = 5
+forks          = 100
 #poll_interval  = 15
 #sudo_user      = root
 #ask_sudo_pass = True
@@ -82,6 +83,7 @@ stdout_callback = yaml
 
 # enable callback plugins, they can output to stdout but cannot be 'stdout' type.
 #callback_whitelist = timer, mail
+callback_whitelist = profile_tasks
 
 # Determine whether includes in tasks and handlers are "static" by
 # default. As of 2.0, includes are dynamic by default. Setting these
