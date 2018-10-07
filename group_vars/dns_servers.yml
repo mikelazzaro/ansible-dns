@@ -46,3 +46,21 @@ test_domains:
   - { domain: "api.corp", address: "{{ api_server_ip }}" }
   - { domain: "db.corp", address: "{{ api_server_ip }}" }
   - { domain: "media.corp", address: "{{ api_server_ip }}" }
+
+test_domains_non_isolated:
+  # Fixed IP addresses
+  - { domain: "alpha-dns01.global.corp", address: "10.0.20.50" }
+  - { domain: "beta-dns02.global.corp", address: "10.0.30.51" }
+  - { domain: "gamma-api.global.corp", address: "10.0.40.20" }
+  - { domain: "delta-api.global.corp", address: "10.0.50.20" }
+
+test_domains_isolated:
+  # DNS domains
+  - { domain: "{{ dns_nontest_primary_hostname }}", address: "{{ ansible_host }}" }
+  - { domain: "{{ dns_nontest_primary_hostname }}", address: "{{ ansible_host }}" }
+  - { domain: "{{ dns_nontest_secondary_hostname }}", address: "{{ ansible_host }}" }
+  # API/DB domains
+  - { domain: "{{ api_server_nontest_hostname }}", address: "{{ api_server_ip }}" }
+
+# Additional test domains, e.g. Micros
+# ...
