@@ -58,13 +58,25 @@
     - "google.com."
     - "otgexp.com."
 
+#- name: Run full set of resolution tests, including checking for correctness
+#  include_tasks: check_dns_entry.yml
+#  with_items: "{{ test_domains }}"
+
 - name: Run full set of resolution tests, including checking for correctness
-  include_tasks: check_dns_entry.yml
-  with_items: "{{ test_domains }}"
+  include_tasks: check_dns_entries.yml
+  vars:
+    dns_entries: "{{ test_domains }}"
+#  when: not is_isolated
+
+#- name: Run full set of resolution tests (non-isolated)
+#  include_tasks: check_dns_entry.yml
+#  with_items: "{{ test_domains_non_isolated }}"
+#  when: not is_isolated
 
 - name: Run full set of resolution tests (non-isolated)
-  include_tasks: check_dns_entry.yml
-  with_items: "{{ test_domains_non_isolated }}"
+  include_tasks: check_dns_entries.yml
+  vars:
+    dns_entries: "{{ test_domains_non_isolated }}"
   when: not is_isolated
 
 #- name: Run full set of resolution tests (isolated)
