@@ -127,7 +127,10 @@
     owner: root
     group: root
     mode: "0644"
-  notify: Rebuild resolvconf
+#  notify: Rebuild resolvconf
+
+- name: Rebuild resolvconf
+  command: resolvconf -u
 
 - name: Basic test of one local domain
   command: nslookup api.corp 127.0.0.1
