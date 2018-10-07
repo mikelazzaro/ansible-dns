@@ -29,7 +29,8 @@
 
 - name: Reboot if necessary
   reboot:
-    reboot_timeout: 600
+#    reboot_timeout: 600
+  when: reboot_notifier.stat.exists
 
 - name: Install bind and other required packages
   apt:
