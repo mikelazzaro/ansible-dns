@@ -2,14 +2,15 @@
 
 - name: Install various required packages
   apt:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
-  with_items:
-    - bind9
-    - bind9utils
-    - dnsutils
-#    - bind9-host
+  vars:
+    packages:
+      - bind9
+      - bind9utils
+      - dnsutils
+  #    - bind9-host
   tags:
     - skip_ansible_lint
 
