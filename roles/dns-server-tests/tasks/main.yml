@@ -67,12 +67,12 @@
   with_items: "{{ test_domains_non_isolated }}"
   when: not is_isolated
 
-- name: Run full set of resolution tests (isolated)
-  include_tasks: check_dns_entry.yml
-  with_items: "{{ test_domains_isolated }}"
-  when: is_isolated
+#- name: Run full set of resolution tests (isolated)
+#  include_tasks: check_dns_entry.yml
+#  with_items: "{{ test_domains_isolated }}"
+#  when: is_isolated
 
-- name: Run full set of resolution tests (isolated) - TESTING
+- name: Run full set of resolution tests (isolated)
   include_tasks: check_dns_entries.yml
   vars:
     dns_entries: "{{ test_domains_isolated }}"
