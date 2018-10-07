@@ -1,5 +1,11 @@
 ---
 
+- name: Make sure all packages are up to date
+  apt:
+    upgrade: dist
+  tags:
+    - skip_ansible_lint
+
 - name: Make sure SSH folder exists
   file:
     path: "{{ ssh_config_folder }}"
