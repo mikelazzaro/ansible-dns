@@ -34,13 +34,14 @@
   tags:
     - skip_ansible_lint
 
-- name: Install various AWS dependencies
+- name: Install various AWS dependencies & other useful Python packages
   pip:
     name: "{{ item }}"
     state: latest
   with_items:
     - boto
     - boto3
+    - ansible-lint
   tags:
     - skip_ansible_lint
 
