@@ -4,6 +4,14 @@
   register: nslookup_result
   changed_when: false
 
+- name: Check output of nslookup operation (msg)
+  debug:
+    msg: "{{ nslookup_result }}"
+
+- name: Check output of nslookup operation (var)
+  debug:
+    var: nslookup_result
+
 - name: Fail if results don't match
   fail:
     msg: "Query for {{ item.domain }} returned '{{ nslookup_result.stdout_lines[-1] }}' instead of expected '{{ item.address }}'"
