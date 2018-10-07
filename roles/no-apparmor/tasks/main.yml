@@ -24,8 +24,9 @@
 
 - name: Ensure apparmor is completely removed
   apt:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: absent
-  with_items:
-    - apparmor
-    - apparmor-utils
+  vars:
+    packages:
+      - apparmor
+      - apparmor-utils
