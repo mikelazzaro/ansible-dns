@@ -66,15 +66,6 @@
     group: "{{ ansible_user }}"
     mode: "0644"
 
-- name: Install various other useful things
-  pip:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - ansible-lint
-  tags:
-    - skip_ansible_lint
-
 - name: Modify resolv.conf generation process to include central DNS server
   template:
     src: "resolvconf_head"
