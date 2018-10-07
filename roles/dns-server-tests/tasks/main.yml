@@ -52,12 +52,12 @@
     - "db.corp."
     - "media.corp."
     # Global domains
-#    - "central-dns01.global.corp."
+    - "central-dns01.global.corp."
     - "{{ api_server_hostname }}."
-#    - "alpha-dns01.global.corp."
     # External domains
     - "google.com."
     - "otgexp.com."
+
 
 - name: Run full set of resolution tests, including checking for correctness
   include_tasks: check_dns_entry.yml
