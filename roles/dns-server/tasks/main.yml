@@ -34,13 +34,14 @@
 
 - name: Install bind and other required packages
   apt:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
-  with_items:
-  - bind9
-  - bind9utils
-  - bind9-doc
+  vars:
+    packages:
+    - bind9
+    - bind9utils
+    - bind9-doc
   tags:
     - skip_ansible_lint
 
