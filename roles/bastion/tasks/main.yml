@@ -37,7 +37,7 @@
 
 - name: Install various AWS dependencies & other useful Python packages
   pip:
-    name: "{{ item }}"
+    name: "{{ packages }}"
     state: latest
   vars:
     packages:
