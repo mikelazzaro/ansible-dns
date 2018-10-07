@@ -20,7 +20,7 @@
 
 - name: Perform nslookup for list of test domains
   command: "nslookup {{ item.domain }} localhost"
-  with_items: "{{ test_data }}"
+  with_items: "{{ dns_entries }}"
   register: test_result
   failed_when: item.address not in test_result.stdout_lines[-1]
   changed_when: False
