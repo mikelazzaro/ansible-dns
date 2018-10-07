@@ -1,5 +1,11 @@
 ---
 
+- name: Make sure all packages are up to date
+  apt:
+    upgrade: dist
+  tags:
+    - skip_ansible_lint
+
 - name: Install various required packages
   apt:
     name: "{{ packages }}"
