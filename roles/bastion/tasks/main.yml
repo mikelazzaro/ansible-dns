@@ -82,3 +82,6 @@
 
 - name: Force rebuild of resolv.conf
   command: "resolvconf -u"
+  # Note: this task *does* change stuff, so ignore ansible-lint's complaints
+  tags:
+  - skip_ansible_lint
