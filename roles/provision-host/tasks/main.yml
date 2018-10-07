@@ -37,7 +37,7 @@
     key_name: "{{ aws_ssh_key }}"
     instance_tags:
       Name: "{{ aws_name_tag }}"
-    assign_public_ip: no
+#    assign_public_ip: no
     private_ip: "{{ private_ip_address }}"
     exact_count: 1
     count_tag:
