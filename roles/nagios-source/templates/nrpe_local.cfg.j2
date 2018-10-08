@@ -11,7 +11,7 @@
 command[check_disk]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /
 command[check_disk_inodes]=/usr/lib/nagios/plugins/check_disk -W 50% -K 25% -p /
 command[check_ssh]=/usr/lib/nagios/plugins/check_ssh -H localhost
-command[check_dns]=/usr/lib/nagios/plugins/check_dns -H central-dns.global.corp. -s localhost
+command[check_dns]=/usr/lib/nagios/plugins/check_dns -H central-dns01.global.corp. -s localhost
 command[check_users]=/usr/lib/nagios/plugins/check_users -w 5 -c 10
 command[check_load]=/usr/lib/nagios/plugins/check_load -w 15,10,5 -c 30,25,20
 command[check_memory]=/usr/lib/nagios/plugins/check_mem -w 80 -c 90
