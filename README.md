@@ -2,13 +2,13 @@ Phoenix Servers with Ansible
 ============================
 
 This is the demo code for [Phoenix Servers with Ansible: or How I Learned to Stop Worrying and Love
- DNS](https://docs.google.com/presentation/d/1qA5vXhKMeg2iOgg4lIYN6OTwpa46EzXhr70U1a05Z0g/edit?usp=sharing).
+ DNS](https://docs.google.com/presentation/d/e/2PACX-1vTWYKZ1BDMMzfY4gz5uelKpJpmhU8eDWAhPQR5PgcIdCuzELA0-q1xLT4DBXNdIMZ9wI6_SlaG5L835/pub?start=false&loop=false&delayms=3000).
 
 Presentation
 ----------------------
 
 Slides for the presentation can be found 
-[here](https://docs.google.com/presentation/d/1qA5vXhKMeg2iOgg4lIYN6OTwpa46EzXhr70U1a05Z0g/edit?usp=sharing).
+[here](https://docs.google.com/presentation/d/e/2PACX-1vTWYKZ1BDMMzfY4gz5uelKpJpmhU8eDWAhPQR5PgcIdCuzELA0-q1xLT4DBXNdIMZ9wI6_SlaG5L835/pub?start=false&loop=false&delayms=3000).
 
 Running the Demo
 ----------------------
