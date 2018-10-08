@@ -1,26 +1,16 @@
-#- name: Perform nslookup for domain
-#  command: "nslookup {{ item.domain }} localhost"
-#  with_items: "{{ dns_entries }}"
-#  register: nslookup_result
-#  changed_when: false
+
+# Simplified version of the full testing process that takes a list of test cases ("dns_entries"),
+#   performs the lookup, and compares the results to the provided address.
 #
-#- name: Check output of nslookup operation (msg)
-#  debug:
-#    msg: "{{ nslookup_result }}"
+# Sample test data:
+#   test_domains:
+#     - { domain: "central-dns01.global.corp", address: "10.0.10.50" }
+#     - { domain: "{{ central_dns_hostname }}", address: "{{ central_dns_ip }}" }
 #
-#- name: Check output of nslookup operation (var)
-#  debug:
-#    var: nslookup_result
-#
-#- name: Fail if results don't match
-#  fail:
-#    msg: "Query for {{ item.domain }} returned '{{ nslookup_result.stdout_lines[-1] }}' instead of expected '{{ item.address }}'"
-#  with_items: "{{ dns_entries }}"
-#  when: item.address not in nslookup_result.stdout_lines[-1]
 
 - name: Perform nslookup for list of test domains
   command: "nslookup {{ item.domain }} localhost"
   with_items: "{{ dns_entries }}"
   register: test_result
-  failed_when: item.address not in test_result.stdout_lines[-1]
+  failed_when: item.address != test_result.stdout_lines[-1][9:]
   changed_when: False
