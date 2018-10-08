@@ -1,0 +1,32 @@
+---
+
+- name: Install nagios plugins and NRPE server packages
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - nagios-plugins-basic
+      - nagios-plugins
+      - nagios-nrpe-server
+
+- name: Deploy NRPE config files
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ nrpe_config_folder }}/{{ item }}"
+    mode: "0644"
+  with_items:
+    - nrpe.cfg
+    - nrpe_local.cfg
+
+- name: Install additional NRPE plugins
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ nrpe_plugin_folder }}/{{ item.name }}"
+    mode: "0755"
+  with_items: "{{ nrpe_plugin_list }}"
+
+- name: Restart NRPE
+  service:
+    name: nagios-nrpe-server
+    state: restarted
