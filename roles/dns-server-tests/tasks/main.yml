@@ -63,10 +63,11 @@
 #  with_items: "{{ test_domains }}"
 
 - name: Run full set of resolution tests, including checking for correctness
-  include_tasks: check_dns_entries.yml
-  vars:
-    dns_entries: "{{ test_domains }}"
-#  when: not is_isolated
+  command: "nslookup {{ item.domain }} localhost"
+  with_items: "{{ test_domains }}"
+  register: test_result
+  failed_when: item.address != test_result.stdout_lines[-1][9:]
+  changed_when: False
 
 #- name: Run full set of resolution tests (non-isolated)
 #  include_tasks: check_dns_entry.yml
@@ -74,9 +75,11 @@
 #  when: not is_isolated
 
 - name: Run full set of resolution tests (non-isolated)
-  include_tasks: check_dns_entries.yml
-  vars:
-    dns_entries: "{{ test_domains_non_isolated }}"
+  command: "nslookup {{ item.domain }} localhost"
+  with_items: "{{ test_domains_non_isolated }}"
+  register: test_result
+  failed_when: item.address != test_result.stdout_lines[-1][9:]
+  changed_when: False
   when: not is_isolated
 
 #- name: Run full set of resolution tests (isolated)
@@ -85,7 +88,10 @@
 #  when: is_isolated
 
 - name: Run full set of resolution tests (isolated)
-  include_tasks: check_dns_entries.yml
-  vars:
-    dns_entries: "{{ test_domains_isolated }}"
+  command: "nslookup {{ item.domain }} localhost"
+  with_items: "{{ test_domains_isolated }}"
+  register: test_result
+  failed_when: item.address != test_result.stdout_lines[-1][9:]
+  changed_when: False
   when: is_isolated
+
