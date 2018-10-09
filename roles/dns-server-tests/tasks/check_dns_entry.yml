@@ -1,3 +1,8 @@
+#
+# Old version of the tasks for checking whether the DNS server is not only resolving
+#   various queries, but resolving them *correctly*.
+#
+
 - name: Perform nslookup for domain
   command: "nslookup {{ item.domain }} localhost"
   register: nslookup_result
