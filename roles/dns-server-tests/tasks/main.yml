@@ -2,7 +2,7 @@
 
 # Will fail if the DNS server is not properly configured to use *itself* as primary DNS server
 - name: Confirm basic DNS settings are correct
-  command: "nslookup localhost"
+  command: "nslookup api.corp."
   changed_when: false
 
 # Checks to see if DNS server can resolve various domains from a local session
