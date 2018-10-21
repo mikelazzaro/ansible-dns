@@ -1,8 +1,8 @@
 ---
 
 - name: Replace standard MOTD help text with a warning message
-  copy:
-    src: motd_warning
+  template:
+    src: motd_warning.j2
     dest: "/etc/update-motd.d/10-help-text"
     owner: root
     group: root
