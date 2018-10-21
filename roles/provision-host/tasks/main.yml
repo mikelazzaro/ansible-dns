@@ -46,7 +46,8 @@
   register: ec2
 
 - name: Wait for system to start up after reboot
-  wait_for:
+  local_action: wait_for
+  args:
     host: ec2.private_ip
     port: 22
     delay: 60
