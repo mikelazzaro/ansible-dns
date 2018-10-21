@@ -1,8 +1,14 @@
 ---
 
 # Will fail if the DNS server is not properly configured to use *itself* as primary DNS server
+#- name: Confirm basic DNS settings are correct
+#  command: "nslookup api.corp."
+#  changed_when: false
+
 - name: Confirm basic DNS settings are correct
-  command: "nslookup api.corp."
+  command: "nslookup localhost"
+  register: test_result
+  failed_when: test_result.stdout_lines[0][9:] != "127.0.0.1"
   changed_when: false
 
 # Checks to see if DNS server can resolve various domains from a local session
