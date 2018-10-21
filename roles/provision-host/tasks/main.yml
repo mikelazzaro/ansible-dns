@@ -44,12 +44,3 @@
       Name: "{{ aws_name_tag }}"
     wait: yes
   register: ec2
-
-- name: Wait for system to start up after reboot
-  local_action: wait_for
-  args:
-    host: ec2.private_ip
-    port: 22
-    delay: 60
-    sleep: 10
-
