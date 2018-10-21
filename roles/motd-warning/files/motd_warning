@@ -10,12 +10,10 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Change text color to RED
-
 echo -e "\033[48;3;31m"
 
 # Print warning message
-
-printf "\n"
+#printf "\n"
 printf "**********************************************************\n"
 printf "*                        WARNING!                        *\n"
 printf "*                                                        *\n"
@@ -28,8 +26,7 @@ printf "* Permanent changes to this server should be handled by  *\n"
 printf "* updating the configuration playbooks.                  *\n"
 printf "*                                                        *\n"
 printf "**********************************************************\n"
-printf "\n"
+#printf "\n"
 
 # Reset text to normal
-
 echo -e "\033[0m"
