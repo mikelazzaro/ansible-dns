@@ -10,6 +10,10 @@ Presentation
 Slides for the presentation can be found 
 [here](https://docs.google.com/presentation/d/e/2PACX-1vTWYKZ1BDMMzfY4gz5uelKpJpmhU8eDWAhPQR5PgcIdCuzELA0-q1xLT4DBXNdIMZ9wI6_SlaG5L835/pub?start=false&loop=false&delayms=3000).
 
+Video of the talk can be found [here](https://www.youtube.com/watch?v=saMDpkdYXB8).
+
+Thanks to [Ansible NYC](https://www.meetup.com/Ansible-NYC/) for hosting!
+
 Running the Demo
 ----------------------
 
